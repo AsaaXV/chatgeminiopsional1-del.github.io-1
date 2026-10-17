@@ -1,0 +1,6 @@
+{
+  "name": "Asrama Mahasiswa HPMT Jeneponto",
+  "description": "Website resmi Asrama Mahasiswa HPMT (Himpunan Pelajar Mahasiswa Turatea) Jeneponto di Makassar — Direktori, panduan warga, fasilitas, dan narahubung Aspura & Aspuri.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
