@@ -3,116 +3,118 @@ import { OFFICIAL_LOGOS } from '../data/dormitoryData.ts';
 
 export const CivicFooter: React.FC = () => {
   return (
-    <footer className="w-full border-t border-line bg-paper-subtle text-ink-muted text-xs pt-12 pb-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-line">
+    <footer className="w-full border-t border-slate-200 bg-white text-slate-600 text-xs pt-16 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-100">
           {/* Col 1: Identity & Motto */}
-          <div className="md:col-span-5 space-y-3">
-            <div className="flex items-center gap-3">
-              <img
-                alt="Logo HPMT Asrama"
-                className="w-9 h-9 object-contain rounded border border-line bg-white p-0.5"
-                src={OFFICIAL_LOGOS.seal}
-                width={36}
-                height={36}
-              />
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-100 p-1 flex items-center justify-center shrink-0">
+                <img
+                  alt="Logo Resmi Asrama HPMT Jeneponto"
+                  className="w-full h-full object-contain rounded"
+                  src={OFFICIAL_LOGOS.seal}
+                  width={44}
+                  height={44}
+                />
+              </div>
               <div>
-                <span className="font-serif text-base font-semibold text-ink block leading-none">
+                <span className="font-extrabold text-base text-slate-900 block leading-tight">
                   Asrama Mahasiswa HPMT Jeneponto
                 </span>
-                <span className="text-[11px] text-ink-subtle">Kota Makassar, Sulawesi Selatan</span>
+                <span className="text-xs text-slate-500 font-medium">Kota Makassar, Sulawesi Selatan</span>
               </div>
             </div>
-            <p className="text-ink-muted leading-relaxed text-[11px] max-w-sm">
-              Wadah berhimpun dan bernaung mahasiswa Kabupaten Jeneponto yang menempuh pendidikan di Kota Makassar.
-              Berakar pada kebersamaan tulus, kemandirian pemuda, dan tanggung jawab kultural Butta Turatea.
+            <p className="text-slate-600 leading-relaxed text-xs sm:text-sm max-w-sm">
+              Wadah berhimpun dan bernaung mahasiswa Kabupaten Jeneponto yang menempuh pendidikan di Kota Makassar. Berakar pada kebersamaan tulus, kemandirian pemuda, dan tanggung jawab kultural Butta Turatea.
             </p>
-            <p className="font-serif italic text-forest text-xs pt-1">
+            <p className="italic text-forest font-semibold text-xs pt-1">
               “Siriganti Pacce ri Butta Turatea — Martabat dan Kebersamaan di Tanah Rantau.”
             </p>
           </div>
 
           {/* Col 2: Alamat Rinci */}
-          <div className="md:col-span-4 space-y-2 text-[11px]">
-            <span className="font-semibold text-ink uppercase tracking-wider block text-xs mb-2">
-              Alamat Wisma
+          <div className="md:col-span-4 space-y-3 text-xs">
+            <span className="font-bold text-slate-900 uppercase tracking-wider block text-xs">
+              Lokasi Wisma
             </span>
-            <div className="space-y-3">
-              <div>
-                <strong className="text-ink font-serif block">Unit Asrama Putra (Aspura):</strong>
-                <p className="text-ink-muted">
+            <div className="space-y-4">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <strong className="text-slate-900 font-bold block mb-0.5">Unit Putra (ASPURA):</strong>
+                <p className="text-slate-600 leading-relaxed mb-1.5">
                   Jl. Anggrek I No. 15, Paropo, Kec. Panakkukang, Kota Makassar, Sulawesi Selatan 90233
                 </p>
                 <a
                   href="https://www.google.com/maps/place/Aspura+hpmt+kab+jeneponto/data=!4m2!3m1!1s0x0:0x4ca1b970d4be393c"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-forest font-medium hover:underline text-[10px]"
+                  className="text-forest font-bold hover:underline text-[11px]"
                 >
-                  Buka Titik Resmi ASPURA di Google Maps ↗
+                  Buka Titik ASPURA di Google Maps ↗
                 </a>
               </div>
-              <div>
-                <strong className="text-ink font-serif block">Unit Asrama Putri (Aspuri):</strong>
-                <p className="text-ink-muted">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <strong className="text-slate-900 font-bold block mb-0.5">Unit Putri (ASPURI):</strong>
+                <p className="text-slate-600 leading-relaxed mb-1.5">
                   Kawasan Minasaupa / Jl. Kumala, Kota Makassar, Sulawesi Selatan
                 </p>
                 <a
                   href="https://www.google.com/maps/place/ASPURI+HPMT+Jeneponto/@-5.1859121,119.4510155,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbee34142ed09d5:0xc905943bb19149b7!8m2!3d-5.1859121!4d119.4510155!16s%2Fg%2F11h0h1vsyq"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-forest font-medium hover:underline text-[10px]"
+                  className="text-forest font-bold hover:underline text-[11px]"
                 >
-                  Buka Titik Resmi ASPURI di Google Maps ↗
+                  Buka Titik ASPURI di Google Maps ↗
                 </a>
               </div>
             </div>
           </div>
 
           {/* Col 3: Arsip & Navigasi */}
-          <div className="md:col-span-3 space-y-2 text-[11px]">
-            <span className="font-semibold text-ink uppercase tracking-wider block text-xs mb-2">
-              Indeks Informasi
+          <div className="md:col-span-3 space-y-3 text-xs">
+            <span className="font-bold text-slate-900 uppercase tracking-wider block text-xs">
+              Navigasi Halaman
             </span>
-            <ul className="space-y-1.5">
+            <ul className="space-y-2 text-slate-600 font-medium">
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#">
-                  Halaman Muka (Beranda)
+                <a className="hover:text-forest transition-colors" href="#">
+                  Beranda
                 </a>
               </li>
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#dua-wisma">
+                <a className="hover:text-forest transition-colors" href="#dua-wisma">
                   Direktori Wisma Aspura &amp; Aspuri
                 </a>
               </li>
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#kehidupan-fasilitas">
-                  Tabel Fasilitas &amp; Swakelola
+                <a className="hover:text-forest transition-colors" href="#kehidupan-fasilitas">
+                  Fasilitas &amp; Iuran
                 </a>
               </li>
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#manifesto-filosofi">
+                <a className="hover:text-forest transition-colors" href="#manifesto-filosofi">
                   Filosofi Siri' na Pacce
                 </a>
               </li>
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#alur-pendaftaran">
+                <a className="hover:text-forest transition-colors" href="#alur-pendaftaran">
                   Tanya Jawab &amp; Alur Warga
                 </a>
               </li>
               <li>
-                <a className="hover:text-forest underline underline-offset-2" href="#kontak-silaturahmi">
-                  Kontak Pengurus WhatsApp
+                <a className="hover:text-forest transition-colors" href="#kontak-silaturahmi">
+                  Kontak Narahubung WhatsApp
                 </a>
               </li>
-              <li>
+              <li className="pt-2">
                 <a
-                  className="hover:text-forest underline underline-offset-2"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-forest font-bold transition-colors"
                   href="https://www.instagram.com/asrama.hpmt/"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Instagram @asrama.hpmt ↗
+                  <span>Instagram @asrama.hpmt</span>
+                  <span aria-hidden="true">↗</span>
                 </a>
               </li>
             </ul>
@@ -120,13 +122,13 @@ export const CivicFooter: React.FC = () => {
         </div>
 
         {/* Copyright Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-ink-subtle gap-2">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
           <p>
-            © Asrama Mahasiswa HPMT Jeneponto di Makassar. Rawat Persaudaraan, Junjung Siri' na Pacce.
+            © {new Date().getFullYear()} Asrama Mahasiswa HPMT Jeneponto di Makassar. Rawat Persaudaraan, Junjung Siri' na Pacce.
           </p>
           <div className="flex items-center gap-3">
             <span>Himpunan Pelajar Mahasiswa Turatea</span>
-            <span className="text-line" aria-hidden="true">•</span>
+            <span aria-hidden="true">•</span>
             <span>Makassar</span>
           </div>
         </div>

@@ -24,11 +24,8 @@ export default function App() {
   };
 
   return (
-    <div className="font-sans selection:bg-forest selection:text-paper min-h-screen flex flex-col bg-paper text-ink pb-safe">
-      {/* Top Gazette Editorial Runner */}
-      <GazetteTicker />
-
-      {/* Main Header / Navigation */}
+    <div className="font-sans selection:bg-forest selection:text-white min-h-screen flex flex-col bg-slate-50 text-slate-900 pb-safe">
+      {/* Main Header / Navigation (Inspired by Asrama YAPI) */}
       <CivicHeader onOpenRegistration={handleOpenRegistration} />
 
       {/* Main Content Area */}

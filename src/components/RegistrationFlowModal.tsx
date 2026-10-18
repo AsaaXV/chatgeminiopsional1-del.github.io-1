@@ -74,50 +74,50 @@ export const RegistrationFlowModal: React.FC<RegistrationFlowModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-ink/60 backdrop-blur-xs overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto"
     >
-      <div className="relative w-full max-w-2xl bg-paper border border-line shadow-2xl p-5 sm:p-7 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl border border-slate-100 shadow-2xl p-6 sm:p-8 max-h-[92vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-line mb-5">
+        <div className="flex items-start justify-between pb-4 border-b border-slate-100 mb-5">
           <div>
-            <span className="text-[10px] uppercase font-bold tracking-widest text-forest block mb-1">
-              Badan Khusus Asrama • Panduan Warga Baru
+            <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-widest text-forest block mb-1">
+              BADAN KHUSUS ASRAMA • PANDUAN WARGA BARU
             </span>
-            <h2 id="modal-title" className="font-serif text-xl sm:text-2xl text-ink font-semibold">
+            <h2 id="modal-title" className="text-xl sm:text-2xl text-slate-900 font-extrabold tracking-tight">
               Formulir Sowan &amp; Minat Masuk Asrama
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-ink-subtle hover:text-ink border border-line bg-white rounded-xs focus:outline-none"
+            className="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-slate-800 bg-slate-50 hover:bg-slate-100 rounded-full transition-colors focus:outline-none cursor-pointer"
             aria-label="Tutup formulir pendaftaran"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
         {/* 4-Step Process Breadcrumb */}
-        <div className="mb-4 bg-paper-subtle p-3.5 border border-line text-xs">
-          <span className="font-semibold text-ink block mb-2">4 Tahapan Alur Menjadi Warga Asrama:</span>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-ink-muted">
-            <div className="p-2 border border-line bg-white">
-              <strong className="text-forest block">1. Isi Formulir</strong>
-              Data identitas asal Jeneponto &amp; kampus.
+        <div className="mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs">
+          <span className="font-bold text-slate-900 block mb-2.5">4 Tahapan Alur Menjadi Warga Asrama:</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-slate-600">
+            <div className="p-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs">
+              <strong className="text-forest font-bold block mb-0.5">1. Isi Formulir</strong>
+              Data asal Jeneponto &amp; kampus.
             </div>
-            <div className="p-2 border border-line bg-white">
-              <strong className="text-forest block">2. Sowan Wisma</strong>
-              Datang bertamu &amp; melihat fisik asrama.
+            <div className="p-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs">
+              <strong className="text-forest font-bold block mb-0.5">2. Sowan Wisma</strong>
+              Datang bertamu &amp; tinjau fisik.
             </div>
-            <div className="p-2 border border-line bg-white">
-              <strong className="text-forest block">3. Verifikasi</strong>
-              Pengecekan KTP/KK &amp; bukti mahasiswa.
+            <div className="p-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs">
+              <strong className="text-forest font-bold block mb-0.5">3. Verifikasi</strong>
+              Pengecekan KTP/KK &amp; kartu mahasiswa.
             </div>
-            <div className="p-2 border border-line bg-white">
-              <strong className="text-forest block">4. Masuk Asrama</strong>
-              Penetapan kamar &amp; komitmen tata tertib.
+            <div className="p-2.5 rounded-xl border border-slate-200/80 bg-white shadow-2xs">
+              <strong className="text-forest font-bold block mb-0.5">4. Masuk Asrama</strong>
+              Penetapan kamar &amp; komitmen tertib.
             </div>
           </div>
         </div>
@@ -370,13 +370,13 @@ export const RegistrationFlowModal: React.FC<RegistrationFlowModalProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="min-h-[44px] px-4 py-2.5 border border-line bg-white hover:bg-paper-subtle text-ink font-medium"
+                className="min-h-[44px] px-5 py-2.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-full transition-colors cursor-pointer"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="min-h-[44px] px-5 py-2.5 bg-forest text-paper hover:bg-forest-deep font-semibold"
+                className="min-h-[44px] px-6 py-2.5 bg-forest hover:bg-forest-deep text-white font-bold rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer"
               >
                 Lanjutkan &amp; Siapkan Pesan WhatsApp →
               </button>
@@ -384,13 +384,13 @@ export const RegistrationFlowModal: React.FC<RegistrationFlowModalProps> = ({
           </form>
         ) : (
           <div className="space-y-4 text-xs">
-            <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xs">
-              <span className="font-semibold block mb-0.5">Format Pesan Silaturahmi Telah Siap</span>
+            <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-950 rounded-2xl">
+              <span className="font-bold block mb-1">Format Pesan Silaturahmi Telah Siap</span>
               Pesan di bawah dirancang sesuai adab dan kesantunan tradisi perantau Turatea kepada pengurus {targetUnit.shortName}.
             </div>
 
             {/* Preview Box */}
-            <div className="p-4 bg-white border border-line rounded-xs font-mono text-[11px] whitespace-pre-wrap text-ink-muted leading-relaxed max-h-56 overflow-y-auto">
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl font-mono text-[11px] whitespace-pre-wrap text-slate-700 leading-relaxed max-h-56 overflow-y-auto">
               {formattedMessage}
             </div>
 
@@ -400,30 +400,30 @@ export const RegistrationFlowModal: React.FC<RegistrationFlowModalProps> = ({
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:flex-1 py-3 px-4 bg-forest text-paper hover:bg-forest-deep text-center font-semibold text-xs flex items-center justify-center gap-2"
+                className="w-full sm:flex-1 py-3 px-5 bg-forest hover:bg-forest-deep text-white text-center font-bold text-xs rounded-full shadow-sm hover:shadow-md flex items-center justify-center gap-2 transition-all"
               >
-                <span>Kirim Langsung ke WhatsApp Pengurus ({targetUnit.coordinatorPhone})</span>
+                <span>Kirim ke WhatsApp Pengurus ({targetUnit.coordinatorPhone})</span>
                 <span aria-hidden="true">↗</span>
               </a>
 
               <button
                 type="button"
                 onClick={handleCopyText}
-                className="w-full sm:w-auto py-3 px-4 border border-line bg-white hover:bg-paper-subtle font-medium text-ink"
+                className="w-full sm:w-auto py-3 px-5 border border-slate-200 bg-white hover:bg-slate-50 font-semibold text-slate-700 rounded-full transition-colors cursor-pointer"
               >
-                {copied ? 'Berhasil Disalin' : 'Salin Pesan'}
+                {copied ? '✓ Berhasil Disalin' : 'Salin Pesan'}
               </button>
 
               <button
                 type="button"
                 onClick={() => setStep('form')}
-                className="w-full sm:w-auto py-3 px-3 text-ink-subtle hover:text-ink text-center underline"
+                className="w-full sm:w-auto py-2.5 px-3 text-slate-500 hover:text-slate-800 text-center font-medium cursor-pointer"
               >
                 Edit Data
               </button>
             </div>
 
-            <p className="text-[11px] text-ink-subtle pt-2">
+            <p className="text-[11px] text-slate-500 pt-2">
               Pengurus asrama akan membalas pesan Anda mengenai jadwal penerimaan sowan langsung di wisma {targetUnit.locationArea}.
             </p>
           </div>

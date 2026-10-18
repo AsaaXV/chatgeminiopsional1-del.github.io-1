@@ -9,48 +9,49 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-line" id="alur-pendaftaran">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
-        <div className="lg:col-span-5">
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
-            Informasi Bagi Calon Warga &amp; Orang Tua
+    <section className="py-20 bg-slate-50 border-t border-slate-100" id="alur-pendaftaran">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-forest block mb-2">
+            PANDUAN CALON WARGA &amp; ORANG TUA
           </span>
-          <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold leading-tight">
-            Tanya Jawab Seputar Kehidupan Asrama
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Tanya Jawab Seputar Asrama
           </h2>
-        </div>
-        <div className="lg:col-span-7 text-[14px] sm:text-sm text-ink/80 leading-relaxed">
-          <p>
-            Berikut beberapa pertanyaan yang kerap diajukan oleh calon mahasiswa baru, orang tua, maupun sesama perantau
-            Turatea mengenai tata cara tinggal dan kehidupan kolektif di asrama.
+          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+            Pertanyaan yang kerap diajukan oleh calon mahasiswa baru, orang tua, maupun sesama perantau Butta Turatea.
           </p>
         </div>
-      </div>
 
-      <div className="divide-y divide-line border-t border-b border-line bg-paper">
-        {FAQ_ITEMS.map((item, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <div key={index} className="py-4 sm:py-5">
-              <button
-                type="button"
-                onClick={() => toggle(index)}
-                aria-expanded={isOpen}
-                className="w-full flex items-center justify-between text-left gap-4 font-serif text-[16px] sm:text-lg font-bold text-ink hover:text-forest transition-colors cursor-pointer"
+        {/* Modern Rounded Accordions */}
+        <div className="space-y-3.5">
+          {FAQ_ITEMS.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={index}
+                className="bg-white rounded-2xl border border-slate-100 shadow-2xs overflow-hidden transition-all duration-200"
               >
-                <span className="leading-snug">{item.question}</span>
-                <span className="min-w-[30px] min-h-[30px] flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-white">
-                  {isOpen ? '−' : '+'}
-                </span>
-              </button>
-              {isOpen && (
-                <div className="mt-3 text-[14px] sm:text-sm text-ink/85 leading-[1.65] pr-2 sm:pr-6">
-                  <p>{item.answer}</p>
-                </div>
-              )}
-            </div>
-          );
-        })}
+                <button
+                  type="button"
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between text-left p-5 sm:p-6 gap-4 font-bold text-slate-900 hover:text-forest transition-colors cursor-pointer"
+                >
+                  <span className="text-sm sm:text-base leading-snug">{item.question}</span>
+                  <span className="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 font-bold text-slate-600 text-sm">
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
+                    <p>{item.answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
