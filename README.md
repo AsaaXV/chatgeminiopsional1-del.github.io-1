@@ -108,18 +108,33 @@ Hasil build produksi akan tersedia di direktori `dist/` yang siap di-deploy ke V
 
 ---
 
-## Panduan Upload ke GitHub
+## Panduan Upload & Menjalankan di GitHub Pages
 
-1. Buat repositori baru di akun [GitHub](https://github.com/new), misalnya dengan nama `asrama-hpmt-jeneponto`.
-2. Di terminal komputer Anda, inisialisasi dan push kode:
-```bash
-git init
-git add .
-git commit -m "feat: inisialisasi website resmi Asrama Mahasiswa HPMT Jeneponto di Makassar"
-git branch -M main
-git remote add origin https://github.com/USERNAME_ANDA/asrama-hpmt-jeneponto.git
-git push -u origin main
-```
+Repositori ini telah dikonfigurasi secara otomatis agar siap berjalan di **GitHub Pages** (menggunakan *relative base path* `./` dan workflow otomatis `.github/workflows/deploy.yml`).
+
+### Langkah-langkah:
+
+1. **Buat Repositori di GitHub**:
+   - Buka [github.com/new](https://github.com/new) dan buat repositori publik baru (misalnya bernama `asrama-hpmt-jeneponto`).
+
+2. **Inisialisasi & Push Kode dari Komputer Anda**:
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: website resmi Asrama Mahasiswa HPMT Jeneponto siap deploy"
+   git branch -M main
+   git remote add origin https://github.com/USERNAME_ANDA/asrama-hpmt-jeneponto.git
+   git push -u origin main
+   ```
+
+3. **Aktifkan GitHub Pages (1 Langkah Sederhana)**:
+   - Buka repositori Anda di GitHub.
+   - Klik tab **Settings** (Pengaturan) > menu **Pages** di bilah kiri.
+   - Di bagian **Build and deployment** > **Source**, pilih:
+     👉 **GitHub Actions**
+   - GitHub akan langsung menjalankan workflow `.github/workflows/deploy.yml` secara otomatis.
+   - Dalam 1-2 menit, website resmi Asrama HPMT sudah online dan dapat diakses di URL:
+     `https://USERNAME_ANDA.github.io/asrama-hpmt-jeneponto/`
 
 ---
 

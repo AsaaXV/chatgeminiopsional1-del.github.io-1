@@ -112,31 +112,33 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               <span>Hubungi Pengurus Aspura via WhatsApp</span>
               <span className="font-mono text-xs">{aspura.coordinatorPhone} →</span>
             </a>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <button
                 type="button"
                 onClick={() => onSelectUnitForRegistration('aspura')}
-                className="flex-1 py-2 text-center text-xs font-medium bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
+                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
               >
                 Isi Formulir Minat Aspura
               </button>
-              <button
-                type="button"
-                onClick={() => setActiveMapUnit(activeMapUnit === 'aspura' ? null : 'aspura')}
-                className="px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
-                title="Buka / Tutup Peta Interaktif"
-              >
-                {activeMapUnit === 'aspura' ? 'Tutup Peta' : 'Lihat Peta'}
-              </button>
-              <a
-                href={aspura.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
-                title="Buka lokasi resmi Aspura hpmt kab jeneponto di Google Maps"
-              >
-                Buka di Google Maps ↗
-              </a>
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
+                <button
+                  type="button"
+                  onClick={() => setActiveMapUnit(activeMapUnit === 'aspura' ? null : 'aspura')}
+                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
+                  title="Buka / Tutup Peta Interaktif"
+                >
+                  {activeMapUnit === 'aspura' ? 'Tutup Peta' : 'Lihat Peta'}
+                </button>
+                <a
+                  href={aspura.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
+                  title="Buka lokasi resmi Aspura hpmt kab jeneponto di Google Maps"
+                >
+                  Google Maps ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -220,31 +222,33 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               <span>Hubungi Pengurus Aspuri via WhatsApp</span>
               <span className="font-mono text-xs">{aspuri.coordinatorPhone} →</span>
             </a>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <button
                 type="button"
                 onClick={() => onSelectUnitForRegistration('aspuri')}
-                className="flex-1 py-2 text-center text-xs font-medium bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
+                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
               >
                 Isi Formulir Minat Aspuri
               </button>
-              <button
-                type="button"
-                onClick={() => setActiveMapUnit(activeMapUnit === 'aspuri' ? null : 'aspuri')}
-                className="px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
-                title="Buka / Tutup Peta Interaktif"
-              >
-                {activeMapUnit === 'aspuri' ? 'Tutup Peta' : 'Lihat Peta'}
-              </button>
-              <a
-                href={aspuri.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
-                title="Buka lokasi resmi ASPURI HPMT Jeneponto di Google Maps"
-              >
-                Buka di Google Maps ↗
-              </a>
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
+                <button
+                  type="button"
+                  onClick={() => setActiveMapUnit(activeMapUnit === 'aspuri' ? null : 'aspuri')}
+                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
+                  title="Buka / Tutup Peta Interaktif"
+                >
+                  {activeMapUnit === 'aspuri' ? 'Tutup Peta' : 'Lihat Peta'}
+                </button>
+                <a
+                  href={aspuri.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
+                  title="Buka lokasi resmi ASPURI HPMT Jeneponto di Google Maps"
+                >
+                  Google Maps ↗
+                </a>
+              </div>
             </div>
           </div>
         </div>

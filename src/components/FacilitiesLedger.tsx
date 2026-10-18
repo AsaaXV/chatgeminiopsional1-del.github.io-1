@@ -109,8 +109,38 @@ export const FacilitiesLedger: React.FC = () => {
           </div>
         </div>
 
-        {/* Ledger Table Style */}
-        <div className="border border-line bg-paper overflow-x-auto shadow-xs">
+        {/* Mobile List View (Optimized for Mobile Phone Screens) */}
+        <div className="sm:hidden border border-line divide-y divide-line bg-paper text-xs shadow-xs">
+          {filteredFacilities.length === 0 ? (
+            <div className="py-8 text-center text-ink-muted px-4">
+              Tidak ditemukan fasilitas dengan kata kunci "{searchQuery}".
+            </div>
+          ) : (
+            filteredFacilities.map((item) => (
+              <div key={item.id} className="p-3.5 flex flex-col gap-1.5">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] text-ink-subtle">{item.no}.</span>
+                    <span className="font-semibold text-forest text-xs">{item.name}</span>
+                  </div>
+                  <span
+                    className={`shrink-0 font-mono text-[11px] font-semibold px-2 py-0.5 border border-line ${
+                      item.category === 'iuran' ? 'bg-white text-ink' : 'bg-forest/5 text-forest'
+                    }`}
+                  >
+                    {item.costStatus}
+                  </span>
+                </div>
+                <p className="text-[11px] text-ink-muted leading-relaxed pl-5">
+                  {item.description}
+                </p>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop Ledger Table (Tablet & Large Screens) */}
+        <div className="hidden sm:block border border-line bg-paper overflow-x-auto shadow-xs">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="border-b border-line bg-paper-muted text-[11px] uppercase tracking-wider text-ink font-semibold">
@@ -157,7 +187,7 @@ export const FacilitiesLedger: React.FC = () => {
           </table>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-between text-[11px] text-ink-subtle gap-2">
+        <div className="mt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-ink-subtle gap-2">
           <span>* Pemeliharaan darurat atau penggantian komponen lampu dilakukan melalui kas sukarela warga.</span>
           <span>Catatan Tata Tertib Warga Tahun Sidang 2024/2025</span>
         </div>

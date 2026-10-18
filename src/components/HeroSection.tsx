@@ -26,18 +26,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectPhoto, onOpenR
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] leading-[1.08] tracking-tight font-medium text-ink">
             Rumah Bersama Mahasiswa Turatea di Perantauan Makassar.
           </h1>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={onOpenRegistration}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-all shadow-xs cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-all shadow-xs cursor-pointer text-center"
             >
               <span>Ajukan Sowan / Pendaftaran Warga</span>
               <span aria-hidden="true">→</span>
             </button>
             <a
               href="#dua-wisma"
-              className="inline-flex items-center gap-2 px-4 py-2.5 border border-line bg-white text-ink text-xs font-medium hover:border-forest hover:text-forest transition-colors"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 border border-line bg-white text-ink text-xs font-medium hover:border-forest hover:text-forest transition-colors text-center"
             >
               <span>Buka Direktori Wisma</span>
               <span aria-hidden="true">↓</span>

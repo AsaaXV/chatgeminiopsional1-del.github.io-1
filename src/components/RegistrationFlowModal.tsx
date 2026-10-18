@@ -366,17 +366,17 @@ export const RegistrationFlowModal: React.FC<RegistrationFlowModalProps> = ({
               />
             </div>
 
-            <div className="pt-2 flex items-center justify-end gap-3 border-t border-line">
+            <div className="pt-3 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 sm:gap-3 border-t border-line">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 border border-line bg-white hover:bg-paper-subtle text-ink font-medium"
+                className="min-h-[44px] px-4 py-2.5 border border-line bg-white hover:bg-paper-subtle text-ink font-medium"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 bg-forest text-paper hover:bg-forest-deep font-semibold"
+                className="min-h-[44px] px-5 py-2.5 bg-forest text-paper hover:bg-forest-deep font-semibold"
               >
                 Lanjutkan &amp; Siapkan Pesan WhatsApp →
               </button>
