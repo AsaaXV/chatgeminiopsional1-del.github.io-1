@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" crossorigin href="./assets/index.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -22,21 +23,13 @@
         var root = document.getElementById('root');
         if (!root || root.children.length === 0) {
           console.warn('Dev server script not active, mounting compiled production bundle...');
-          if (!document.getElementById('bundle-css')) {
-            var css = document.createElement('link');
-            css.id = 'bundle-css';
-            css.rel = 'stylesheet';
-            css.crossOrigin = 'anonymous';
-            css.href = './dist/assets/index.css';
-            document.head.appendChild(css);
-          }
           var js = document.createElement('script');
           js.type = 'module';
           js.crossOrigin = 'anonymous';
-          js.src = './dist/assets/index.js';
+          js.src = './assets/index.js';
           document.body.appendChild(js);
         }
-      }, 150);
+      }, 100);
     </script>
   </body>
 </html>
