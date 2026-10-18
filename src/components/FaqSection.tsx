@@ -12,14 +12,14 @@ export const FaqSection: React.FC = () => {
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-line" id="alur-pendaftaran">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
         <div className="lg:col-span-5">
-          <span className="text-[11px] font-semibold uppercase tracking-widest text-forest block mb-1">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
             Informasi Bagi Calon Warga &amp; Orang Tua
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight">
+          <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold leading-tight">
             Tanya Jawab Seputar Kehidupan Asrama
           </h2>
         </div>
-        <div className="lg:col-span-7 text-xs sm:text-sm text-ink-muted leading-relaxed">
+        <div className="lg:col-span-7 text-[14px] sm:text-sm text-ink/80 leading-relaxed">
           <p>
             Berikut beberapa pertanyaan yang kerap diajukan oleh calon mahasiswa baru, orang tua, maupun sesama perantau
             Turatea mengenai tata cara tinggal dan kehidupan kolektif di asrama.
@@ -31,20 +31,20 @@ export const FaqSection: React.FC = () => {
         {FAQ_ITEMS.map((item, index) => {
           const isOpen = openIndex === index;
           return (
-            <div key={index} className="py-4">
+            <div key={index} className="py-4 sm:py-5">
               <button
                 type="button"
                 onClick={() => toggle(index)}
                 aria-expanded={isOpen}
-                className="w-full flex items-center justify-between text-left gap-4 font-serif text-base sm:text-lg font-medium text-ink hover:text-forest transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between text-left gap-4 font-serif text-[16px] sm:text-lg font-bold text-ink hover:text-forest transition-colors cursor-pointer"
               >
-                <span>{item.question}</span>
-                <span className="text-sm font-mono text-ink-subtle px-2 py-0.5 border border-line bg-white">
+                <span className="leading-snug">{item.question}</span>
+                <span className="min-w-[30px] min-h-[30px] flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-white">
                   {isOpen ? '−' : '+'}
                 </span>
               </button>
               {isOpen && (
-                <div className="mt-3 text-xs sm:text-sm text-ink-muted leading-relaxed pr-6">
+                <div className="mt-3 text-[14px] sm:text-sm text-ink/85 leading-[1.65] pr-2 sm:pr-6">
                   <p>{item.answer}</p>
                 </div>
               )}

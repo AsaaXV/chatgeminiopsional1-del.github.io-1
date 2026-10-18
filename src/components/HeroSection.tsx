@@ -19,25 +19,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectPhoto, onOpenR
         <div className="lg:col-span-8">
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-px bg-forest" aria-hidden="true"></span>
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-forest">
+            <span className="text-[11px] sm:text-xs font-bold tracking-[0.16em] uppercase text-forest">
               Catatan Gerbang Perantauan
             </span>
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-[52px] leading-[1.08] tracking-tight font-medium text-ink">
+          <h1 className="font-serif text-[28px] sm:text-4xl lg:text-[48px] leading-[1.2] sm:leading-[1.12] tracking-tight font-bold text-ink">
             Rumah Bersama Mahasiswa Turatea di Perantauan Makassar.
           </h1>
           <div className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={onOpenRegistration}
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-all shadow-xs cursor-pointer text-center"
+              className="inline-flex items-center justify-center gap-2 min-h-[46px] px-5 py-3 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-all shadow-xs cursor-pointer text-center"
             >
               <span>Ajukan Sowan / Pendaftaran Warga</span>
               <span aria-hidden="true">→</span>
             </button>
             <a
               href="#dua-wisma"
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-4 py-2.5 border border-line bg-white text-ink text-xs font-medium hover:border-forest hover:text-forest transition-colors text-center"
+              className="inline-flex items-center justify-center gap-2 min-h-[46px] px-5 py-3 border border-line bg-white text-ink text-xs sm:text-sm font-medium hover:border-forest hover:text-forest transition-colors text-center"
             >
               <span>Buka Direktori Wisma</span>
               <span aria-hidden="true">↓</span>
@@ -45,15 +45,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectPhoto, onOpenR
           </div>
         </div>
 
-        <div className="lg:col-span-4 text-xs sm:text-sm text-ink-muted leading-relaxed lg:pt-3">
+        <div className="lg:col-span-4 text-[15px] sm:text-base text-ink/85 leading-[1.65] lg:pt-3">
           <p>
             Bagi anak-anak yang menempuh jalan studi ratusan kilometer dari pesisir Binamu, perbukitan Rumbia, Bangkala,
             hingga Tarowang — Asrama HPMT bukan sekadar petak kamar sewa. Ini adalah tempat menyeduh kopi bersama saat larut
             malam, berhimpun di pendopo, dan saling memikul nasib di tanah rantau.
           </p>
-          <div className="mt-4 pt-3 border-t border-line text-[11px] text-ink-subtle flex items-center justify-between">
-            <span>Dikelola Swadaya Mahasiswa</span>
-            <span className="font-medium text-forest">2 Unit Terpisah (Aspura &amp; Aspuri)</span>
+          <div className="mt-5 pt-3.5 border-t border-line text-xs text-ink-muted flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <span className="font-medium text-ink">Dikelola Swadaya Mahasiswa</span>
+            <span className="font-semibold text-forest">2 Unit Terpisah (Aspura &amp; Aspuri)</span>
           </div>
         </div>
       </div>

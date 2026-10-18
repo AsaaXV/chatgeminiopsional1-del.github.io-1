@@ -15,37 +15,37 @@ export const FacilitiesLedger: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           <div className="lg:col-span-5">
-            <span className="text-[11px] font-semibold uppercase tracking-widest text-forest block mb-1">
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
               Transparansi Sarana Hidup
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold leading-tight">
+            <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold leading-tight">
               Kebutuhan Pokok &amp; Iuran Swakelola Warga
             </h2>
           </div>
-          <div className="lg:col-span-7 text-xs sm:text-sm text-ink-muted leading-relaxed">
-            <div className="p-3.5 bg-paper border border-forest/30 rounded-xs">
-              <strong className="text-forest font-semibold block mb-1">
+          <div className="lg:col-span-7">
+            <div className="p-4 sm:p-5 bg-paper border border-forest/30 rounded-xs text-[14px] sm:text-sm text-ink/85 leading-[1.65]">
+              <strong className="text-forest font-bold text-[15px] sm:text-base block mb-1.5">
                 Ketentuan Masuk &amp; Status Biaya Wisma:
               </strong>
-              <p className="mb-2 text-ink-muted">
-                Prinsip tinggal di Asrama HPMT adalah nirlaba dan kekeluargaan. Syarat masuk adalah kontribusi fasilitas sebesar <strong>Rp1.500.000</strong> yang dibayarkan satu kali saat resmi diterima, dan warga tidak dipungut biaya sewa kamar lagi sampai lulus kuliah. Seluruh dana tersebut dialokasikan penuh untuk perawatan dan pengadaan fasilitas fisik asrama bersama.
+              <p className="mb-2.5">
+                Prinsip tinggal di Asrama HPMT adalah nirlaba dan kekeluargaan. Syarat masuk adalah kontribusi fasilitas sebesar <strong className="text-ink font-bold">Rp1.500.000</strong> yang dibayarkan satu kali saat resmi diterima, dan warga tidak dipungut biaya sewa kamar lagi sampai lulus kuliah. Seluruh dana tersebut dialokasikan penuh untuk perawatan dan pengadaan fasilitas fisik asrama bersama.
               </p>
-              <p className="text-[11px] text-forest font-medium">
+              <div className="pt-2 border-t border-forest/20 text-[13px] text-forest font-semibold">
                 Ketentuan Semester: Terbuka maksimal untuk mahasiswa semester 3 (pendaftar di atas semester 3 wajib mengikuti musyawarah dan ketentuan khusus pengurus).
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Search & Category Filter Toolbar */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-4">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
             <button
               type="button"
               onClick={() => setSelectedCategory('all')}
-              className={`px-3 py-1.5 rounded-xs font-medium cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-forest text-paper font-semibold'
+                  ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
@@ -54,9 +54,9 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('pokok')}
-              className={`px-3 py-1.5 rounded-xs font-medium cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'pokok'
-                  ? 'bg-forest text-paper font-semibold'
+                  ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
@@ -65,9 +65,9 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('iuran')}
-              className={`px-3 py-1.5 rounded-xs font-medium cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'iuran'
-                  ? 'bg-forest text-paper font-semibold'
+                  ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
@@ -112,26 +112,31 @@ export const FacilitiesLedger: React.FC = () => {
         {/* Mobile List View (Optimized for Mobile Phone Screens) */}
         <div className="sm:hidden border border-line divide-y divide-line bg-paper text-xs shadow-xs">
           {filteredFacilities.length === 0 ? (
-            <div className="py-8 text-center text-ink-muted px-4">
+            <div className="py-8 text-center text-ink-muted px-4 text-[14px]">
               Tidak ditemukan fasilitas dengan kata kunci "{searchQuery}".
             </div>
           ) : (
             filteredFacilities.map((item) => (
-              <div key={item.id} className="p-3.5 flex flex-col gap-1.5">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] text-ink-subtle">{item.no}.</span>
-                    <span className="font-semibold text-forest text-xs">{item.name}</span>
-                  </div>
+              <div key={item.id} className="p-4 flex flex-col gap-2">
+                {/* Title & Number spanning full width to avoid squished text */}
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-xs font-bold text-ink-subtle shrink-0">{item.no}.</span>
+                  <h3 className="font-bold text-forest text-[15px] leading-snug">{item.name}</h3>
+                </div>
+
+                {/* Status Badge on its own line */}
+                <div className="pl-5">
                   <span
-                    className={`shrink-0 font-mono text-[11px] font-semibold px-2 py-0.5 border border-line ${
+                    className={`inline-block font-mono text-[11px] font-bold px-2.5 py-0.5 border border-line ${
                       item.category === 'iuran' ? 'bg-white text-ink' : 'bg-forest/5 text-forest'
                     }`}
                   >
                     {item.costStatus}
                   </span>
                 </div>
-                <p className="text-[11px] text-ink-muted leading-relaxed pl-5">
+
+                {/* Description */}
+                <p className="text-[13.5px] text-ink/80 leading-relaxed pl-5">
                   {item.description}
                 </p>
               </div>

@@ -4,7 +4,7 @@ export const GazetteTicker: React.FC = () => {
   return (
     <aside
       aria-label="Warta Resmi dan Kontak Cepat"
-      className="w-full border-b border-line bg-paper-subtle text-xs text-ink-muted tracking-tight"
+      className="hidden sm:block w-full border-b border-line bg-paper-subtle text-xs text-ink-muted tracking-tight"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-y-2 text-xs">
         <div className="flex items-center gap-3">

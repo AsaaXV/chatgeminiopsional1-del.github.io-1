@@ -9,14 +9,14 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="flex items-center gap-2 mb-1">
               <span className="w-4 h-px bg-forest" aria-hidden="true"></span>
-              <span className="text-[11px] font-semibold uppercase tracking-widest text-forest block">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block">
                 Pintu Selalu Terbuka
               </span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl text-ink font-semibold mb-3">
+            <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold mb-3 leading-tight">
               Silaturahmi, Pendaftaran Kamar, &amp; Kunjungan Sanak Saudara
             </h2>
-            <p className="text-xs sm:text-sm text-ink-muted leading-relaxed max-w-xl mb-6">
+            <p className="text-[14px] sm:text-sm text-ink/85 leading-[1.65] max-w-xl mb-6">
               Apakah Anda mahasiswa baru asal Butta Turatea yang baru tiba di Makassar? Atau orang tua dan alumni yang
               ingin bertandang silaturahmi? Narahubung pengurus asrama siap menerima Anda dengan tangan terbuka.
             </p>
@@ -24,24 +24,24 @@ export const ContactSection: React.FC = () => {
             {/* Structured Contact Units for Aspura & Aspuri */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-5">
               {/* ASPURA Card */}
-              <div className="p-4 border border-line bg-paper-subtle flex flex-col justify-between">
+              <div className="p-4 sm:p-5 border border-line bg-paper-subtle flex flex-col justify-between">
                 <div className="mb-3">
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-forest">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-forest">
                       Unit 01 • ASPURA
                     </span>
-                    <span className="text-[10px] text-ink-subtle">Panakkukang</span>
+                    <span className="text-[11px] text-ink-subtle">Panakkukang</span>
                   </div>
-                  <strong className="text-xs font-semibold text-ink block">
+                  <strong className="text-[14px] sm:text-xs font-bold text-ink block">
                     Koordinator Asrama Putra
                   </strong>
-                  <span className="text-[11px] text-ink-muted block mt-0.5 font-mono">
+                  <span className="text-[13px] sm:text-[11px] text-forest font-bold block mt-0.5 font-mono">
                     +62 852-4038-9682
                   </span>
                 </div>
-                <div className="space-y-1.5 pt-2 border-t border-line/60">
+                <div className="space-y-2 pt-2.5 border-t border-line/60">
                   <a
-                    className="flex items-center justify-between w-full px-3 py-2 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-colors"
+                    className="flex items-center justify-between w-full min-h-[44px] px-3.5 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-colors"
                     href="https://wa.me/6285240389682?text=Tabe'%20Pengurus%20Aspura%20HPMT,%20saya%20ingin%20bertanya%20mengenai%20kamar/kunjungan%20asrama."
                     rel="noopener noreferrer"
                     target="_blank"
@@ -50,7 +50,7 @@ export const ContactSection: React.FC = () => {
                     <span className="text-[11px]" aria-hidden="true">→</span>
                   </a>
                   <a
-                    className="flex items-center justify-between w-full px-3 py-1.5 bg-white border border-line hover:border-forest text-ink hover:text-forest text-[11px] font-medium transition-colors"
+                    className="flex items-center justify-between w-full min-h-[40px] px-3.5 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium transition-colors"
                     href="https://www.google.com/maps/place/Aspura+hpmt+kab+jeneponto/data=!4m2!3m1!1s0x0:0x4ca1b970d4be393c"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -62,24 +62,24 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* ASPURI Card */}
-              <div className="p-4 border border-line bg-paper-subtle flex flex-col justify-between">
+              <div className="p-4 sm:p-5 border border-line bg-paper-subtle flex flex-col justify-between">
                 <div className="mb-3">
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-forest">
+                    <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-forest">
                       Unit 02 • ASPURI
                     </span>
-                    <span className="text-[10px] text-ink-subtle">Minasaupa</span>
+                    <span className="text-[11px] text-ink-subtle">Minasaupa</span>
                   </div>
-                  <strong className="text-xs font-semibold text-ink block">
+                  <strong className="text-[14px] sm:text-xs font-bold text-ink block">
                     Koordinator Asrama Putri
                   </strong>
-                  <span className="text-[11px] text-ink-muted block mt-0.5 font-mono">
+                  <span className="text-[13px] sm:text-[11px] text-forest font-bold block mt-0.5 font-mono">
                     +62 853-9714-2677
                   </span>
                 </div>
-                <div className="space-y-1.5 pt-2 border-t border-line/60">
+                <div className="space-y-2 pt-2.5 border-t border-line/60">
                   <a
-                    className="flex items-center justify-between w-full px-3 py-2 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-colors"
+                    className="flex items-center justify-between w-full min-h-[44px] px-3.5 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-colors"
                     href="https://wa.me/6285397142677?text=Tabe'%20Pengurus%20Aspuri%20HPMT,%20saya%20ingin%20bertanya%20mengenai%20kamar/kunjungan%20asrama."
                     rel="noopener noreferrer"
                     target="_blank"
@@ -88,7 +88,7 @@ export const ContactSection: React.FC = () => {
                     <span className="text-[11px]" aria-hidden="true">→</span>
                   </a>
                   <a
-                    className="flex items-center justify-between w-full px-3 py-1.5 bg-white border border-line hover:border-forest text-ink hover:text-forest text-[11px] font-medium transition-colors"
+                    className="flex items-center justify-between w-full min-h-[40px] px-3.5 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium transition-colors"
                     href="https://www.google.com/maps/place/ASPURI+HPMT+Jeneponto/@-5.1859121,119.4510155,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbee34142ed09d5:0xc905943bb19149b7!8m2!3d-5.1859121!4d119.4510155!16s%2Fg%2F11h0h1vsyq"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -101,9 +101,9 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Travel note from Jeneponto */}
-            <div className="mt-6 pt-4 border-t border-line text-xs text-ink-muted">
-              <span className="font-semibold text-ink block mb-1">Akses Perjalanan dari Jeneponto:</span>
-              <p className="text-[11px] leading-relaxed">
+            <div className="mt-6 pt-4 border-t border-line text-xs sm:text-sm text-ink-muted">
+              <span className="font-bold text-ink block mb-1">Akses Perjalanan dari Jeneponto:</span>
+              <p className="text-[13.5px] sm:text-xs leading-relaxed text-ink/85">
                 Dari Kab. Jeneponto (Binamu / Rumbia / Bangkala / Tarowang), naik angkutan penumpang umum jurusan Makassar. Turun di Terminal Mallengkerang atau persimpangan Alauddin / Pettarani, kemudian lanjutkan dengan ojek daring langsung ke titik wisma.
               </p>
             </div>
