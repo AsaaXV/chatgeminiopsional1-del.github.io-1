@@ -16,6 +16,28 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // Auto-fallback for static hosts (such as GitHub Pages root folder deployment)
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        if (!root || root.children.length === 0) {
+          console.warn('Dev server script not active, mounting compiled production bundle...');
+          if (!document.getElementById('bundle-css')) {
+            var css = document.createElement('link');
+            css.id = 'bundle-css';
+            css.rel = 'stylesheet';
+            css.crossOrigin = 'anonymous';
+            css.href = './dist/assets/index.css';
+            document.head.appendChild(css);
+          }
+          var js = document.createElement('script');
+          js.type = 'module';
+          js.crossOrigin = 'anonymous';
+          js.src = './dist/assets/index.js';
+          document.body.appendChild(js);
+        }
+      }, 150);
+    </script>
   </body>
 </html>
 
