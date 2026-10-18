@@ -1,93 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const ManifestoSection: React.FC = () => {
-  return (
-    <section id="manifesto-filosofi" className="bg-slate-950 text-white py-18 sm:py-24 relative overflow-hidden">
-      {/* Subtle Dot Pattern */}
-      <div className="absolute inset-0 bg-dot-pattern-dark opacity-30 pointer-events-none" />
+  const [activeTab, setActiveTab] = useState<'siri' | 'pacce'>('siri');
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-          <span className="text-xs font-bold uppercase tracking-[0.22em] text-emerald-400 block mb-3">
-            FALSAFAH BUTTA TURATEA
+  return (
+    <section id="manifesto-filosofi" className="border-y border-line bg-forest text-paper py-14 sm:py-18">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-8">
+          <span className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#baeed9] font-bold block mb-2">
+            Nilai Pegangan Butta Turatea
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Yang membedakan kami.
+          <h2 className="font-serif text-[24px] sm:text-3xl lg:text-4xl italic font-bold text-white leading-tight">
+            “Siriganti Pacce ri Butta Turatea”
           </h2>
-          <p className="mt-4 text-slate-400 text-sm sm:text-base leading-relaxed">
-            Asrama HPMT bukan semata-mata tempat berteduh dan tidur. Ini adalah laboratorium pembinaan moral, karakter, dan persaudaraan sejati berlandaskan prinsip <em className="text-emerald-300 not-italic font-semibold">Siriganti Pacce</em>.
-          </p>
+          <div className="w-16 h-0.5 bg-[#baeed9]/50 mx-auto mt-4" aria-hidden="true"></div>
         </div>
 
-        {/* 4 Feature Cards (Directly matching Asrama YAPI's 'Yang membedakan kami' card grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {/* Card 1 */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-950/70 border border-emerald-800/50 flex items-center justify-center text-emerald-400 shrink-0">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                Pilar Siri’ (Kehormatan &amp; Disiplin Moral)
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Menjunjung tinggi harga diri dan martabat keluarga Butta Turatea di perantauan Makassar. Setiap warga dididik untuk tekun belajar, menjauhi perilaku tercela, dan menyelesaikan studi tepat waktu untuk membahagiakan orang tua di kampung.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-[15px] sm:text-base text-paper/90 leading-[1.7] font-normal">
+          <div>
+            <p className="first-letter:font-serif first-letter:text-4xl first-letter:float-left first-letter:mr-2.5 first-letter:text-[#baeed9] first-letter:font-bold first-letter:leading-none">
+              Di tanah rantau Makassar, persaudaraan anak Jeneponto diuji oleh realitas perkuliahan yang keras. Di asrama inilah konsep <strong className="text-white font-semibold not-italic">Siri’</strong> (harga diri, martabat, dan malu berbuat tercela) serta <strong className="text-white font-semibold not-italic">Pacce</strong> (solidaritas mendalam saat saudara tertimpa kesulitan) bukan sekadar wacana seminar kebudayaan.
+            </p>
+          </div>
+          <div>
+            <p>
+              Ketika uang kiriman terlambat dari kampung, nasi sebungkus dibagi bertiga di beranda. Ketika tugas akhir terasa buntu, senior dan kawan sekamar membimbing tanpa sekat kaku. Inilah alasan mengapa asrama tetap bertahan melewati dekade demi dekade: menjaga mahasiswa Turatea tetap berakal budi, beradab, dan pulang membawa kehormatan bagi daerah.
+            </p>
+          </div>
+        </div>
+
+        {/* Interactive Philosophical Pillar Toggle */}
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 mb-4">
+            <button
+              type="button"
+              onClick={() => setActiveTab('siri')}
+              className={`min-h-[44px] px-4 py-2 text-xs sm:text-sm font-semibold rounded-xs transition-colors cursor-pointer text-center ${
+                activeTab === 'siri'
+                  ? 'bg-[#baeed9] text-forest'
+                  : 'bg-white/10 text-paper/80 hover:bg-white/20'
+              }`}
+            >
+              Pilar Siri' (Kehormatan Diri)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('pacce')}
+              className={`min-h-[44px] px-4 py-2 text-xs sm:text-sm font-semibold rounded-xs transition-colors cursor-pointer text-center ${
+                activeTab === 'pacce'
+                  ? 'bg-[#baeed9] text-forest'
+                  : 'bg-white/10 text-paper/80 hover:bg-white/20'
+              }`}
+            >
+              Pilar Pacce (Solidaritas Pedih)
+            </button>
           </div>
 
-          {/* Card 2 */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl bg-blue-950/70 border border-blue-800/50 flex items-center justify-center text-blue-400 shrink-0">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                Pilar Pacce (Solidaritas Pedih Rantau)
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Rasa sakit saudara adalah luka kita bersama. Saat uang kiriman terlambat, beras dinikmati bersama di pendopo. Saat ada warga jatuh sakit, asrama bergerak sebagai garda pertolongan pertama tanpa memandang latar belakang.
-              </p>
-            </div>
+          <div className="bg-forest-deep/60 p-4 sm:p-6 border border-white/15 rounded-xs text-[14px] sm:text-[15px] leading-[1.65] text-paper/90">
+            {activeTab === 'siri' ? (
+              <div>
+                <strong className="text-[#baeed9] font-serif text-[17px] sm:text-lg block mb-1.5 font-bold">
+                  Siri' na Sipakatau — Disiplin Moral &amp; Martabat Belajar
+                </strong>
+                <p className="text-paper/85 text-[14px] sm:text-sm leading-relaxed">
+                  Menjaga nama baik keluarga dan nama baik Butta Turatea di Makassar. Tidak bermalas-malasan, tidak melakukan tindakan kriminal, menghargai sesama warga asrama, dan memprioritaskan kelulusan tepat waktu untuk membahagiakan orang tua di kampung.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <strong className="text-[#baeed9] font-serif text-[17px] sm:text-lg block mb-1.5 font-bold">
+                  Pacce ri Butta Kalabbirang — Ikatan Rasa Senasib Sepenanggungan
+                </strong>
+                <p className="text-paper/85 text-[14px] sm:text-sm leading-relaxed">
+                  Rasa sakit kawan adalah rasa sakit kita bersama. Jika ada sesama warga tertimpa musibah sakit, kehabisan beras, atau kesulitan biaya semester, asrama bergerak sebagai keluarga pertama yang mengulurkan tangan tanpa pamrih.
+                </p>
+              </div>
+            )}
           </div>
+        </div>
 
-          {/* Card 3 */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl bg-amber-950/70 border border-amber-800/50 flex items-center justify-center text-amber-400 shrink-0">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                Swakelola Mahasiswa Berintegritas
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Dikelola langsung oleh mahasiswa aktif melalui musyawarah warga. Menumbuhkan kecakapan kepemimpinan, pemecahan masalah nyata (*problem solver*), dan tanggung jawab kolektif menjaga fasilitas wisma.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 4 */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-all flex items-start gap-5">
-            <div className="w-12 h-12 rounded-2xl bg-purple-950/70 border border-purple-800/50 flex items-center justify-center text-purple-400 shrink-0">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                Jaringan Solid Alumni &amp; Warga Rantau
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Terhubung dengan puluhan angkatan alumni HPMT yang kini berkiprah sebagai akademisi, birokrat, pengusaha, dan tokoh masyarakat di Makassar maupun tanah air, siap membimbing adik-adik mahasiswa baru.
-              </p>
-            </div>
-          </div>
+        <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between text-[11px] text-paper/60 uppercase tracking-wider">
+          <span>Prinsip Kolektivitas Warga</span>
+          <span>Gotong Royong • Egaliter • Tanpa Senioritas Menindas</span>
         </div>
       </div>
     </section>

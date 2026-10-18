@@ -9,37 +9,41 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 sm:h-20">
-          {/* Logo & Brand Identity */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-100 p-1 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-forest/30 transition-colors">
-              <img
-                alt="Logo Resmi Asrama HPMT Jeneponto"
-                className="w-full h-full object-contain rounded"
-                src={OFFICIAL_LOGOS.emblem}
-                width={48}
-                height={48}
-              />
-            </div>
+    <header className="w-full border-b border-line bg-paper sticky top-0 z-30 shadow-xs">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:pt-5 sm:pb-4">
+        <div className="flex items-center justify-between gap-3 sm:pb-4 sm:border-b sm:border-line">
+          {/* Logo & Civic Seal */}
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <img
+              alt="Logo Resmi Asrama HPMT Jeneponto"
+              className="w-9 h-9 sm:w-14 sm:h-14 object-contain rounded border border-line bg-white p-0.5 sm:p-1 shrink-0"
+              src={OFFICIAL_LOGOS.emblem}
+              width={56}
+              height={56}
+            />
             <div className="min-w-0">
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.14em] uppercase text-forest block leading-none mb-1">
+              <span className="text-[9px] sm:text-[10px] tracking-wider uppercase text-forest font-bold block leading-none mb-0.5">
                 Badan Khusus Asrama • PP HPMT
               </span>
-              <span className="font-sans text-[17px] sm:text-xl font-extrabold text-slate-900 tracking-tight block leading-tight group-hover:text-forest transition-colors">
+              <a
+                className="font-serif text-[15px] sm:text-3xl tracking-tight font-bold text-forest leading-tight hover:text-forest-light transition-colors block whitespace-nowrap"
+                href="#"
+              >
                 Asrama HPMT Jeneponto
-              </span>
+              </a>
+              <p className="text-xs text-ink-muted mt-1 font-normal max-w-lg hidden sm:block">
+                Himpunan Pelajar Mahasiswa Turatea — Ruang hidup, berteduh, dan silaturahmi di Makassar.
+              </p>
             </div>
-          </a>
+          </div>
 
-          {/* Desktop Nav Links (Like Asrama YAPI) */}
-          <nav aria-label="Navigasi Utama" className="hidden lg:flex items-center gap-7 text-[13px] font-semibold text-slate-600">
-            <a className="text-forest hover:text-forest-deep transition-colors" href="#">
+          {/* Desktop Nav */}
+          <nav aria-label="Navigasi Utama" className="hidden lg:flex items-center gap-5 text-xs font-medium text-ink">
+            <a className="hover:text-forest transition-colors font-semibold text-forest" href="#">
               Beranda
             </a>
             <a className="hover:text-forest transition-colors" href="#dua-wisma">
-              Wisma
+              Direktori Wisma
             </a>
             <a className="hover:text-forest transition-colors" href="#kehidupan-fasilitas">
               Fasilitas &amp; Iuran
@@ -48,47 +52,38 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
               Siri' na Pacce
             </a>
             <a className="hover:text-forest transition-colors" href="#alur-pendaftaran">
-              Alur Masuk
+              Alur Warga Baru
             </a>
             <a className="hover:text-forest transition-colors" href="#kontak-silaturahmi">
-              Kontak
+              Narahubung
             </a>
+            <button
+              type="button"
+              onClick={() => onOpenRegistration()}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-paper bg-forest hover:bg-forest-deep transition-colors cursor-pointer"
+            >
+              <span>Daftar / Sowan Warga</span>
+              <span className="text-[11px]" aria-hidden="true">→</span>
+            </button>
           </nav>
 
-          {/* Desktop Action Buttons (Rounded Pills) */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="#kontak-silaturahmi"
-              className="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-full transition-colors"
-            >
-              Kunjungan Sowan
-            </a>
+          {/* Mobile navigation controls */}
+          <div className="flex lg:hidden items-center gap-1.5 shrink-0">
             <button
               type="button"
               onClick={() => onOpenRegistration()}
-              className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold text-white bg-forest hover:bg-forest-deep rounded-full transition-all shadow-sm hover:shadow-md cursor-pointer"
+              className="min-h-[34px] px-2.5 py-1 text-[11px] font-bold text-paper bg-forest hover:bg-forest-deep rounded-xs shadow-xs cursor-pointer"
             >
-              Daftar Warga
-            </button>
-          </div>
-
-          {/* Mobile Right Controls */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={() => onOpenRegistration()}
-              className="px-3.5 py-1.5 text-xs font-bold text-white bg-forest hover:bg-forest-deep rounded-full shadow-xs cursor-pointer"
-            >
-              Daftar
+              Sowan
             </button>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 border border-slate-200 focus:outline-none cursor-pointer"
+              className="min-h-[34px] min-w-[34px] p-1.5 border border-line rounded-xs text-ink hover:bg-paper-subtle focus:outline-none flex items-center justify-center cursor-pointer"
               aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
               aria-expanded={mobileMenuOpen}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -99,53 +94,70 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile dropdown menu */}
         {mobileMenuOpen && (
-          <nav aria-label="Navigasi Ponsel" className="lg:hidden py-4 border-t border-slate-100 space-y-1.5 text-sm font-semibold text-slate-700 animate-in fade-in-50 duration-200">
+          <nav aria-label="Navigasi Ponsel" className="lg:hidden pt-3 pb-2 space-y-2 text-xs font-medium text-ink border-t border-line mt-2">
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50 text-forest font-bold"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs font-semibold text-forest"
               href="#"
             >
               Beranda
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs"
               href="#dua-wisma"
             >
               Direktori Wisma (Aspura &amp; Aspuri)
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs"
               href="#kehidupan-fasilitas"
             >
               Fasilitas &amp; Iuran Swakelola
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs"
               href="#manifesto-filosofi"
             >
               Filosofi Siri' na Pacce
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs"
               href="#alur-pendaftaran"
             >
               Syarat &amp; Alur Warga Baru
             </a>
             <a
               onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg hover:bg-slate-50"
+              className="block py-1.5 px-2 hover:bg-paper-subtle rounded-xs"
               href="#kontak-silaturahmi"
             >
-              Narahubung &amp; Kunjungan
+              Narahubung &amp; Lokasi
             </a>
           </nav>
         )}
+
+        {/* Sub-header ticker bar - only on tablet & desktop */}
+        <div className="hidden sm:flex pt-2.5 flex-wrap items-center justify-between text-[11px] text-ink-subtle tracking-wide uppercase gap-2">
+          <div className="flex items-center gap-3">
+            <span className="text-forest font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-forest rounded-full"></span>
+              Status: Terbuka Penerimaan Warga Baru
+            </span>
+            <span className="text-line hidden md:inline" aria-hidden="true">•</span>
+            <span className="hidden md:inline">
+              Prinsip: Berlandaskan Semangat <em className="lowercase italic font-serif text-ink font-normal">Siri' na Pacce</em>
+            </span>
+          </div>
+          <div className="font-medium text-ink tracking-normal uppercase text-[11px]">
+            Edisi Komunal &amp; Kearsipan Warga
+          </div>
+        </div>
       </div>
     </header>
   );

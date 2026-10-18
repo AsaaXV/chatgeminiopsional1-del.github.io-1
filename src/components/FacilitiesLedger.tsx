@@ -1,64 +1,52 @@
-import React, { useState } from 'react';
-import { FACILITIES_DATA, FacilityItem } from '../data/dormitoryData.ts';
+import React, { useState, useMemo } from 'react';
+import { FACILITIES_DATA } from '../data/dormitoryData.ts';
+import { filterFacilities } from '../utils/asrama.ts';
 
 export const FacilitiesLedger: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'pokok' | 'iuran' | 'komunal'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const filteredFacilities = FACILITIES_DATA.filter((item: FacilityItem) => {
-    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-    const matchesSearch =
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.costStatus.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredFacilities = useMemo(() => {
+    return filterFacilities(FACILITIES_DATA, searchQuery, selectedCategory);
+  }, [searchQuery, selectedCategory]);
 
   return (
-    <section className="py-20 bg-white" id="kehidupan-fasilitas">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+    <section className="border-t border-line bg-paper-subtle py-16" id="kehidupan-fasilitas">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           <div className="lg:col-span-5">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-forest block mb-2">
-              SARANA &amp; IURAN SWAKELOLA
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
+              Transparansi Sarana Hidup
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Fasilitas &amp; Transparansi Pembiayaan
+            <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold leading-tight">
+              Kebutuhan Pokok &amp; Iuran Swakelola Warga
             </h2>
-            <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-              Prinsip tinggal di Asrama HPMT adalah nirlaba dan kekeluargaan swadaya mahasiswa, bukan komersial.
-            </p>
           </div>
-
           <div className="lg:col-span-7">
-            {/* Notice Callout Card (Inspired by YAPI's Clean Box) */}
-            <div className="p-6 sm:p-7 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm relative overflow-hidden">
-              <div className="flex items-center gap-2 text-forest font-bold text-sm sm:text-base mb-2">
-                <span className="w-2 h-2 rounded-full bg-forest"></span>
-                <span>Ketentuan Masuk &amp; Status Biaya Wisma</span>
-              </div>
-              <p className="text-slate-700 text-xs sm:text-sm leading-relaxed mb-3">
-                Syarat masuk adalah kontribusi fasilitas sebesar <strong className="text-forest font-bold text-base">Rp1.500.000</strong> yang dibayarkan satu kali saat resmi diterima, dan warga <strong className="text-slate-900 font-semibold">tidak dipungut biaya sewa kamar lagi sampai lulus kuliah</strong>. Seluruh dana tersebut dialokasikan penuh untuk perawatan fisik wisma bersama.
+            <div className="p-4 sm:p-5 bg-paper border border-forest/30 rounded-xs text-[14px] sm:text-sm text-ink/85 leading-[1.65]">
+              <strong className="text-forest font-bold text-[15px] sm:text-base block mb-1.5">
+                Ketentuan Masuk &amp; Status Biaya Wisma:
+              </strong>
+              <p className="mb-2.5">
+                Prinsip tinggal di Asrama HPMT adalah nirlaba dan kekeluargaan. Syarat masuk adalah kontribusi fasilitas sebesar <strong className="text-ink font-bold">Rp1.500.000</strong> yang dibayarkan satu kali saat resmi diterima, dan warga tidak dipungut biaya sewa kamar lagi sampai lulus kuliah. Seluruh dana tersebut dialokasikan penuh untuk perawatan dan pengadaan fasilitas fisik asrama bersama.
               </p>
-              <div className="pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium flex items-center gap-2">
-                <span className="text-forest font-bold">ℹ Ketentuan Semester:</span>
-                <span>Terbuka maksimal untuk mahasiswa semester 3.</span>
+              <div className="pt-2 border-t border-forest/20 text-[13px] text-forest font-semibold">
+                Ketentuan Semester: Terbuka maksimal untuk mahasiswa semester 3 (pendaftar di atas semester 3 wajib mengikuti musyawarah dan ketentuan khusus pengurus).
               </div>
             </div>
           </div>
         </div>
 
-        {/* Search & Filter Toolbar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
-          {/* Pill Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+        {/* Search & Category Filter Toolbar */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
             <button
               type="button"
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-forest text-white shadow-xs'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-forest text-paper'
+                  : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
               Semua ({FACILITIES_DATA.length})
@@ -66,10 +54,10 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('pokok')}
-              className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'pokok'
-                  ? 'bg-forest text-white shadow-xs'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-forest text-paper'
+                  : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
               Kebutuhan Pokok
@@ -77,10 +65,10 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('iuran')}
-              className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
                 selectedCategory === 'iuran'
-                  ? 'bg-forest text-white shadow-xs'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-forest text-paper'
+                  : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
               Iuran Kolektif
@@ -88,80 +76,125 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('komunal')}
-              className={`px-4 py-2 text-xs font-bold rounded-full transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xs font-medium cursor-pointer transition-colors ${
                 selectedCategory === 'komunal'
-                  ? 'bg-forest text-white shadow-xs'
-                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-forest text-paper font-semibold'
+                  : 'bg-paper border border-line text-ink hover:bg-paper-muted'
               }`}
             >
               Fasilitas Komunal
             </button>
           </div>
 
-          {/* Search Box */}
-          <div className="relative min-w-[260px]">
+          <div className="relative w-full sm:w-64">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari fasilitas (mis: wifi, air, listrik)..."
-              className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-forest focus:bg-white transition-all"
+              className="w-full px-3 py-1.5 text-xs bg-paper border border-line focus:border-forest focus:outline-none placeholder:text-ink-subtle"
             />
-            <svg
-              className="w-4 h-4 text-slate-400 absolute left-3 top-2.5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-subtle hover:text-ink p-0.5"
+                aria-label="Bersihkan pencarian"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Facilities Grid (Modern Rounded Cards - never squeezed on mobile!) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Mobile List View (Optimized for Mobile Phone Screens) */}
+        <div className="sm:hidden border border-line divide-y divide-line bg-paper text-xs shadow-xs">
           {filteredFacilities.length === 0 ? (
-            <div className="col-span-full py-12 text-center text-slate-500 bg-slate-50 rounded-3xl border border-slate-100 text-sm">
-              Tidak ditemukan sarana dengan kata kunci "{searchQuery}".
+            <div className="py-8 text-center text-ink-muted px-4 text-[14px]">
+              Tidak ditemukan fasilitas dengan kata kunci "{searchQuery}".
             </div>
           ) : (
             filteredFacilities.map((item) => (
-              <div
-                key={item.id}
-                className="p-6 rounded-3xl bg-slate-50/70 border border-slate-100 hover:border-slate-200 hover:bg-white hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
-              >
-                <div>
-                  {/* Number & Name spanning full width */}
-                  <div className="flex items-baseline gap-2 mb-2.5">
-                    <span className="font-mono text-xs font-bold text-slate-400 shrink-0">
-                      {item.no}.
-                    </span>
-                    <h3 className="font-bold text-slate-900 text-base leading-snug">
-                      {item.name}
-                    </h3>
-                  </div>
-
-                  {/* Status Badge */}
-                  <div className="mb-3">
-                    <span
-                      className={`inline-block font-mono text-[11px] font-bold px-3 py-1 rounded-full border ${
-                        item.category === 'iuran'
-                          ? 'bg-amber-50 text-amber-800 border-amber-200'
-                          : 'bg-emerald-50 text-forest border-emerald-200'
-                      }`}
-                    >
-                      {item.costStatus}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+              <div key={item.id} className="p-4 flex flex-col gap-2">
+                {/* Title & Number spanning full width to avoid squished text */}
+                <div className="flex items-baseline gap-2">
+                  <span className="font-mono text-xs font-bold text-ink-subtle shrink-0">{item.no}.</span>
+                  <h3 className="font-bold text-forest text-[15px] leading-snug">{item.name}</h3>
                 </div>
+
+                {/* Status Badge on its own line */}
+                <div className="pl-5">
+                  <span
+                    className={`inline-block font-mono text-[11px] font-bold px-2.5 py-0.5 border border-line ${
+                      item.category === 'iuran' ? 'bg-white text-ink' : 'bg-forest/5 text-forest'
+                    }`}
+                  >
+                    {item.costStatus}
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p className="text-[13.5px] text-ink/80 leading-relaxed pl-5">
+                  {item.description}
+                </p>
               </div>
             ))
           )}
+        </div>
+
+        {/* Desktop Ledger Table (Tablet & Large Screens) */}
+        <div className="hidden sm:block border border-line bg-paper overflow-x-auto shadow-xs">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-line bg-paper-muted text-[11px] uppercase tracking-wider text-ink font-semibold">
+                <th className="py-3 px-4 w-12 text-center">No.</th>
+                <th className="py-3 px-4 w-1/4">Fasilitas / Sarana</th>
+                <th className="py-3 px-4 w-36">Status Biaya</th>
+                <th className="py-3 px-4">Keterangan &amp; Tata Kelola Warga</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-line font-normal text-ink">
+              {filteredFacilities.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="py-8 text-center text-ink-muted">
+                    Tidak ditemukan fasilitas dengan kata kunci "{searchQuery}".
+                  </td>
+                </tr>
+              ) : (
+                filteredFacilities.map((item) => (
+                  <tr key={item.id} className="hover:bg-paper-subtle transition-colors">
+                    <td className="py-3.5 px-4 text-center font-mono text-ink-subtle">
+                      {item.no}
+                    </td>
+                    <td className="py-3.5 px-4 font-medium text-forest">
+                      {item.name}
+                    </td>
+                    <td className="py-3.5 px-4 font-medium">
+                      <span
+                        className={
+                          item.category === 'iuran'
+                            ? 'font-mono font-semibold text-ink'
+                            : 'text-forest'
+                        }
+                      >
+                        {item.costStatus}
+                      </span>
+                    </td>
+                    <td className="py-3.5 px-4 text-ink-muted leading-relaxed">
+                      {item.description}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-ink-subtle gap-2">
+          <span>* Pemeliharaan darurat atau penggantian komponen lampu dilakukan melalui kas sukarela warga.</span>
+          <span>Catatan Tata Tertib Warga Tahun Sidang 2024/2025</span>
         </div>
       </div>
     </section>

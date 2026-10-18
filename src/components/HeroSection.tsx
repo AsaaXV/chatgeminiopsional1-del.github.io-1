@@ -9,178 +9,163 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectPhoto, onOpenRegistration }) => {
   const gatePhoto = ARCHIVAL_PHOTOS.find((p) => p.id === 'gate') || ARCHIVAL_PHOTOS[0];
   const gazeboPhoto = ARCHIVAL_PHOTOS.find((p) => p.id === 'gazebo') || ARCHIVAL_PHOTOS[1];
+  const yardPhoto = ARCHIVAL_PHOTOS.find((p) => p.id === 'yard') || ARCHIVAL_PHOTOS[2];
+  const sidePhoto = ARCHIVAL_PHOTOS.find((p) => p.id === 'side') || ARCHIVAL_PHOTOS[3];
 
   return (
-    <section className="relative overflow-hidden pt-8 sm:pt-14 pb-16 lg:pb-24 bg-white">
-      {/* Decorative Dot Pattern Background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-dot-pattern opacity-40 pointer-events-none -z-0" />
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-10 pb-16">
+      {/* Headline & Editorial Introduction */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-10 border-b border-line items-start">
+        <div className="lg:col-span-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-6 h-px bg-forest" aria-hidden="true"></span>
+            <span className="text-[11px] sm:text-xs font-bold tracking-[0.16em] uppercase text-forest">
+              Catatan Gerbang Perantauan
+            </span>
+          </div>
+          <h1 className="font-serif text-[28px] sm:text-4xl lg:text-[48px] leading-[1.2] sm:leading-[1.12] tracking-tight font-bold text-ink">
+            Rumah Bersama Mahasiswa Turatea di Perantauan Makassar.
+          </h1>
+          <div className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+            <button
+              type="button"
+              onClick={onOpenRegistration}
+              className="inline-flex items-center justify-center gap-2 min-h-[46px] px-5 py-3 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-all shadow-xs cursor-pointer text-center"
+            >
+              <span>Ajukan Sowan / Pendaftaran Warga</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <a
+              href="#dua-wisma"
+              className="inline-flex items-center justify-center gap-2 min-h-[46px] px-5 py-3 border border-line bg-white text-ink text-xs sm:text-sm font-medium hover:border-forest hover:text-forest transition-colors text-center"
+            >
+              <span>Buka Direktori Wisma</span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Editorial Headline & Actions (Like YAPI) */}
-          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-            {/* Pill Badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6">
-              <span className="px-3.5 py-1 text-[11px] font-bold tracking-wider uppercase bg-forest text-white rounded-full shadow-2xs">
-                PP HPMT MAKASSAR
-              </span>
-              <span className="px-3.5 py-1 text-[11px] font-semibold tracking-wider uppercase text-slate-700 bg-slate-50 border border-slate-200 rounded-full">
-                Badan Khusus Asrama
-              </span>
-            </div>
+        <div className="lg:col-span-4 text-[15px] sm:text-base text-ink/85 leading-[1.65] lg:pt-3">
+          <p>
+            Bagi anak-anak yang menempuh jalan studi ratusan kilometer dari pesisir Binamu, perbukitan Rumbia, Bangkala,
+            hingga Tarowang — Asrama HPMT bukan sekadar petak kamar sewa. Ini adalah tempat menyeduh kopi bersama saat larut
+            malam, berhimpun di pendopo, dan saling memikul nasib di tanah rantau.
+          </p>
+          <div className="mt-5 pt-3.5 border-t border-line text-xs text-ink-muted flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <span className="font-medium text-ink">Dikelola Swadaya Mahasiswa</span>
+            <span className="font-semibold text-forest">2 Unit Terpisah (Aspura &amp; Aspuri)</span>
+          </div>
+        </div>
+      </div>
 
-            {/* Main Headline */}
-            <h1 className="text-[34px] sm:text-5xl lg:text-[58px] font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-5">
-              The Home of <br />
-              <span className="font-serif italic text-forest font-bold">Turatea Leaders.</span>
-            </h1>
+      {/* AUTHENTIC DOCUMENTARY PHOTO GALLERY */}
+      <div className="pt-8">
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-[11px] font-semibold uppercase tracking-widest text-ink-subtle">
+            Koleksi Visual Fisik &amp; Keseharian Wisma
+          </span>
+          <span className="text-[11px] text-ink-muted hidden sm:inline italic">
+            Klik foto untuk memperbesar &amp; melihat kearsipan
+          </span>
+        </div>
 
-            {/* Lead Narrative */}
-            <p className="text-[15px] sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-              Rumah tempat bertumbuh, bukan sekadar kamar sewa. Hunian kepemimpinan dan kekeluargaan mahasiswa perantau asal Kabupaten Jeneponto di Makassar sejak dekade silam, berakar teguh pada falsafah luhur <strong className="text-slate-800 font-semibold">Siri' na Pacce</strong>.
-            </p>
-
-            {/* Action Buttons (Pill Format) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-              <button
-                type="button"
-                onClick={onOpenRegistration}
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-sm font-bold text-white bg-forest hover:bg-forest-deep rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer text-center"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                </svg>
-                <span>Daftar Warga Baru</span>
-              </button>
-              <a
-                href="#dua-wisma"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 rounded-full shadow-2xs hover:border-slate-300 transition-all text-center"
-              >
-                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                <span>Direktori Wisma</span>
-              </a>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          {/* Large Lead Photograph: Aspuri Gate */}
+          <div className="lg:col-span-7">
+            <figure
+              onClick={() => onSelectPhoto(gatePhoto)}
+              className="border border-line bg-white p-2 group cursor-pointer hover:border-forest transition-all duration-200"
+            >
+              <div className="aspect-[16/10] overflow-hidden bg-paper-muted relative">
+                <img
+                  alt="Gerbang resmi Aspuri HPMT Kabupaten Jeneponto di Makassar"
+                  className="w-full h-full object-cover grayscale-[15%] contrast-[1.05] group-hover:grayscale-0 group-hover:scale-102 transition-all duration-300"
+                  src={gatePhoto.url}
+                  loading="eager"
+                />
+                <div className="absolute top-2 right-2 bg-paper/90 backdrop-blur-xs text-[10px] font-mono px-2 py-0.5 border border-line text-ink opacity-0 group-hover:opacity-100 transition-opacity">
+                  Perbesar ↗
+                </div>
+              </div>
+              <figcaption className="pt-3 px-1 pb-1 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 text-[11px] text-ink-muted">
+                <span className="font-medium text-ink group-hover:text-forest transition-colors">
+                  {gatePhoto.title}
+                </span>
+                <span className="text-ink-subtle">
+                  {gatePhoto.location}
+                </span>
+              </figcaption>
+            </figure>
           </div>
 
-          {/* Right Column: Organic Curved Photo Card & Overlaid Quote (Like YAPI) */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-lg lg:max-w-none">
-              {/* Main Photo Card with distinctive asymmetric rounded corner */}
-              <div
-                onClick={() => onSelectPhoto(gatePhoto)}
-                className="relative rounded-[32px] sm:rounded-[44px] overflow-hidden shadow-2xl bg-slate-100 border border-slate-100 group cursor-pointer"
+          {/* Secondary Photographs: Real Gazebo & Real Yard */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            {/* Night Discussion at Gazebo */}
+            <figure
+              onClick={() => onSelectPhoto(gazeboPhoto)}
+              className="border border-line bg-white p-2 group cursor-pointer hover:border-forest transition-all duration-200"
+            >
+              <div className="aspect-[16/9] overflow-hidden bg-paper-muted relative">
+                <img
+                  alt="Suasana santai diskusi malam mahasiswi di gazebo pendopo asrama"
+                  className="w-full h-full object-cover grayscale-[10%] contrast-[1.05] group-hover:grayscale-0 group-hover:scale-102 transition-all duration-300"
+                  src={gazeboPhoto.url}
+                  loading="lazy"
+                />
+                <div className="absolute top-2 right-2 bg-paper/90 backdrop-blur-xs text-[10px] font-mono px-2 py-0.5 border border-line text-ink opacity-0 group-hover:opacity-100 transition-opacity">
+                  Perbesar ↗
+                </div>
+              </div>
+              <figcaption className="pt-2.5 px-1 pb-1 text-[11px] text-ink-muted leading-tight">
+                <span className="font-medium text-ink block mb-0.5 group-hover:text-forest transition-colors">
+                  {gazeboPhoto.title}
+                </span>
+                {gazeboPhoto.caption}
+              </figcaption>
+            </figure>
+
+            {/* Teras & Pekarangan (Two small split figures) */}
+            <div className="grid grid-cols-2 gap-3">
+              <figure
+                onClick={() => onSelectPhoto(yardPhoto)}
+                className="border border-line bg-white p-1.5 group cursor-pointer hover:border-forest transition-all duration-200"
               >
-                <div className="aspect-[4/3] sm:aspect-[16/11] overflow-hidden relative">
+                <div className="aspect-[4/3] overflow-hidden bg-paper-muted relative">
                   <img
-                    alt="Gerbang resmi Aspuri HPMT Kabupaten Jeneponto di Makassar"
-                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
-                    src={gatePhoto.url}
-                    loading="eager"
+                    alt="Pekarangan dan fasad bangunan asrama"
+                    className="w-full h-full object-cover group-hover:scale-103 transition-all duration-300"
+                    src={yardPhoto.url}
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                  
-                  {/* Photo Title Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 text-white z-10 hidden sm:block">
-                    <span className="text-xs font-semibold tracking-wide uppercase text-emerald-300 block mb-0.5">
-                      Kearsipan Fisik Wisma
-                    </span>
-                    <span className="text-sm font-bold text-white drop-shadow-sm">
-                      {gatePhoto.title}
-                    </span>
-                  </div>
                 </div>
-              </div>
+                <figcaption className="pt-1.5 text-[10px] text-ink-subtle leading-tight group-hover:text-ink transition-colors">
+                  {yardPhoto.title}
+                </figcaption>
+              </figure>
 
-              {/* Overlaid Quote Card (Inspired by YAPI's Blue Quote Box) */}
-              <div className="relative sm:absolute sm:-bottom-8 sm:-left-8 mt-4 sm:mt-0 max-w-xs sm:max-w-[280px] bg-forest text-white p-5 rounded-2xl sm:rounded-3xl shadow-xl border border-emerald-800/40 z-20">
-                <div className="text-emerald-300 text-3xl font-serif font-black leading-none mb-2">
-                  “
+              <figure
+                onClick={() => onSelectPhoto(sidePhoto)}
+                className="border border-line bg-white p-1.5 group cursor-pointer hover:border-forest transition-all duration-200"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-paper-muted relative">
+                  <img
+                    alt="Lorong teras samping dan parkir kendaraan"
+                    className="w-full h-full object-cover group-hover:scale-103 transition-all duration-300"
+                    src={sidePhoto.url}
+                    loading="lazy"
+                  />
                 </div>
-                <p className="text-xs sm:text-[13px] leading-relaxed font-medium text-emerald-50">
-                  Membentuk mahasiswa Turatea berintegritas, cerdas bernalar, dan saling memikul nasib di perantauan Makassar.
-                </p>
-                <span className="text-[10px] tracking-wider uppercase text-emerald-300/80 font-bold block mt-3">
-                  Siri’ na Pacce
-                </span>
-              </div>
+                <figcaption className="pt-1.5 text-[10px] text-ink-subtle leading-tight group-hover:text-ink transition-colors">
+                  {sidePhoto.title}
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
 
-        {/* Floating Stat Metric Bar (Inspired by YAPI's 4-metric strip) */}
-        <div className="mt-14 sm:mt-20 pt-4">
-          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-100 shadow-xl p-5 sm:p-7 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-            {/* Stat 1 */}
-            <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-forest shrink-0">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block leading-tight">
-                  2 Unit
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Komplek Wisma Putra &amp; Putri
-                </span>
-              </div>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-4">
-              <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block leading-tight">
-                  1x Bayar
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Rp1.5 Juta Sekali Sampai Lulus
-                </span>
-              </div>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-4">
-              <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block leading-tight">
-                  100%
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Bebas Sewa Kamar Bulanan
-                </span>
-              </div>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="flex items-center gap-3.5 pt-3 sm:pt-0 sm:px-4">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 block leading-tight">
-                  Kader
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  Persaudaraan Warga Turatea
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="text-[11px] text-ink-subtle mt-4 italic text-right font-serif">
+          Dokumentasi asli fisik wisma dan ruang komunal warga asrama — tanpa rekayasa studio visual.
+        </p>
       </div>
     </section>
   );

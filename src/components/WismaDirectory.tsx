@@ -1,264 +1,315 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DORMITORY_UNITS } from '../data/dormitoryData.ts';
 import { generateWhatsAppUrl } from '../utils/asrama.ts';
 
 interface WismaDirectoryProps {
-  onOpenRegistration?: (unit?: 'aspura' | 'aspuri') => void;
-  onSelectUnitForRegistration?: (unit: 'aspura' | 'aspuri') => void;
+  onSelectUnitForRegistration: (unit: 'aspura' | 'aspuri') => void;
 }
 
-export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onOpenRegistration, onSelectUnitForRegistration }) => {
-  const triggerRegistration = onOpenRegistration || onSelectUnitForRegistration || (() => {});
-  const aspura = DORMITORY_UNITS[0];
-  const aspuri = DORMITORY_UNITS[1];
+export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForRegistration }) => {
+  const [activeMapUnit, setActiveMapUnit] = useState<'aspura' | 'aspuri' | null>(null);
+
+  const aspura = DORMITORY_UNITS.find((u) => u.id === 'aspura')!;
+  const aspuri = DORMITORY_UNITS.find((u) => u.id === 'aspuri')!;
 
   const aspuraWaText = "Tabe' Pengurus Aspura HPMT, saya ingin bertanya mengenai ketersediaan kamar dan jadwal sowan silaturahmi ke asrama putra.";
   const aspuriWaText = "Tabe' Pengurus Aspuri HPMT, saya ingin bertanya mengenai ketersediaan kamar dan jadwal sowan silaturahmi ke asrama putri.";
 
   return (
-    <section className="py-20 bg-slate-50 border-y border-slate-100" id="dua-wisma">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-forest block mb-2">
-            KOMPLEK HUNIAN MAHASISWA
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16" id="dua-wisma">
+      <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line gap-4 mb-8">
+        <div>
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
+            Dua Unit Domisili
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Dua Unit Wisma Mandiri
+          <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold">
+            Buku Direktori Wisma Mahasiswa
           </h2>
-          <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-            Pengelolaan asrama dibagi menjadi dua lokasi independen untuk menjaga kenyamanan, ketertiban, dan privasi warga putra maupun putri di Makassar.
-          </p>
         </div>
+        <p className="text-[14px] sm:text-xs text-ink/80 max-w-md leading-relaxed">
+          Pengelolaan asrama dibagi menjadi dua lokasi independen untuk menjaga kenyamanan, ketertiban, dan privasi warga putra maupun putri.
+        </p>
+      </div>
 
-        {/* Two Modern Rounded Cards (Aspura & Aspuri) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
-          {/* ASPURA CARD */}
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
-            <div>
-              {/* Card Header Banner */}
-              <div className="p-6 sm:p-8 bg-gradient-to-br from-emerald-900 to-forest text-white relative">
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-3 py-1 bg-white/15 backdrop-blur-xs rounded-full text-[11px] font-bold tracking-wider uppercase text-emerald-200">
-                    {aspura.code} • Asrama Putra
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-200/90">
-                    {aspura.locationArea}
-                  </span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  {aspura.name}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                  {aspura.description}
-                </p>
-              </div>
+      {/* Two Dignified Column Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-line">
+        {/* ASPURA LEDGER */}
+        <div className="md:pr-8 pt-4 md:pt-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-baseline justify-between border-b border-line pb-2 mb-4">
+              <span className="text-xs font-bold text-forest tracking-wider uppercase">
+                {aspura.code}
+              </span>
+              <span className="text-[11px] text-ink-subtle">{aspura.locationArea}</span>
+            </div>
+            <h3 className="font-serif text-[22px] sm:text-2xl text-ink font-bold mb-2">
+              {aspura.name}
+            </h3>
+            <p className="text-[14px] sm:text-xs text-ink/80 leading-[1.65] mb-4">
+              {aspura.description}
+            </p>
 
-              {/* Feature Tags */}
-              <div className="p-6 sm:p-8 pb-4">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {aspura.features.map((feat, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700"
-                    >
-                      ✓ {feat}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Structured Metadata Rows */}
-                <div className="space-y-4 text-xs sm:text-sm">
-                  {/* Address */}
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-forest block mb-1">
-                      Alamat Lengkap
-                    </span>
-                    <p className="text-slate-800 font-medium leading-snug">
-                      {aspura.fullAddress}
-                    </p>
-                  </div>
-
-                  {/* Landmark */}
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-forest block mb-1">
-                      Titik Patokan Akses
-                    </span>
-                    <p className="text-slate-800 font-medium leading-snug">
-                      {aspura.landmark}
-                    </p>
-                  </div>
-
-                  {/* Security & Room specs */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-forest block mb-0.5">
-                        Jam Malam &amp; Keamanan
-                      </span>
-                      <span className="text-xs font-medium text-slate-800">
-                        {aspura.curfewAndSecurity}
-                      </span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-forest block mb-0.5">
-                        Kapasitas Kamar
-                      </span>
-                      <span className="text-xs font-medium text-slate-800">
-                        {aspura.roomCapacity}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Key badges */}
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {aspura.features.map((feat, idx) => (
+                <span
+                  key={idx}
+                  className="inline-block text-[11px] px-2 py-0.5 border border-line bg-white text-ink-muted font-medium"
+                >
+                  • {feat}
+                </span>
+              ))}
             </div>
 
-            {/* Card Footer Actions */}
-            <div className="p-6 sm:p-8 pt-0 space-y-2.5">
-              <a
-                className="flex items-center justify-center gap-2 w-full py-3.5 px-5 bg-forest hover:bg-forest-deep text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all text-center"
-                href={generateWhatsAppUrl(aspura.whatsappNumber, aspuraWaText)}
-                rel="noopener noreferrer"
-                target="_blank"
+            {/* Metadata Ledger */}
+            <dl className="text-xs divide-y divide-line/70 border-t border-b border-line mb-6">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Alamat Lengkap</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right max-w-xs leading-snug">
+                  {aspura.fullAddress}
+                </dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Resmi Google Maps</dt>
+                <dd className="text-forest font-medium sm:text-right text-[13.5px] sm:text-xs">
+                  <a
+                    href={aspura.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-ink font-semibold inline-flex items-center gap-1"
+                  >
+                    <span>Aspura hpmt kab jeneponto</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Patokan</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.landmark}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Keamanan &amp; Jam Malam</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.curfewAndSecurity}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Kapasitas Kamar</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.roomCapacity}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Koordinator Narahubung</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.coordinatorTitle}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="pt-2 space-y-2">
+            <a
+              className="inline-flex items-center justify-between w-full p-3 border border-forest text-xs font-semibold text-forest hover:bg-forest hover:text-paper transition-all focus:outline-none focus:ring-1 focus:ring-forest"
+              href={generateWhatsAppUrl(aspura.whatsappNumber, aspuraWaText)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>Hubungi Pengurus Aspura via WhatsApp</span>
+              <span className="font-mono text-xs">{aspura.coordinatorPhone} →</span>
+            </a>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <button
+                type="button"
+                onClick={() => onSelectUnitForRegistration('aspura')}
+                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
               >
-                <span>Hubungi Koordinator Aspura via WhatsApp</span>
-                <span className="font-mono text-xs opacity-90">({aspura.coordinatorPhone}) →</span>
-              </a>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <a
-                  className="flex items-center justify-center gap-1.5 py-2.5 px-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold rounded-full transition-colors text-center shadow-2xs"
-                  href={aspura.googleMapsUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <svg className="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
-                  <span>Titik Google Maps</span>
-                </a>
+                Isi Formulir Minat Aspura
+              </button>
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
                 <button
                   type="button"
-                  onClick={() => triggerRegistration('aspura')}
-                  className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-full transition-colors cursor-pointer"
+                  onClick={() => setActiveMapUnit(activeMapUnit === 'aspura' ? null : 'aspura')}
+                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
+                  title="Buka / Tutup Peta Interaktif"
                 >
-                  Ajukan Kamar Aspura
+                  {activeMapUnit === 'aspura' ? 'Tutup Peta' : 'Lihat Peta'}
                 </button>
+                <a
+                  href={aspura.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
+                  title="Buka lokasi resmi Aspura hpmt kab jeneponto di Google Maps"
+                >
+                  Google Maps ↗
+                </a>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* ASPURI CARD */}
-          <div className="bg-white rounded-3xl border border-slate-100 shadow-xl overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
-            <div>
-              {/* Card Header Banner */}
-              <div className="p-6 sm:p-8 bg-gradient-to-br from-emerald-950 to-slate-900 text-white relative">
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="px-3 py-1 bg-white/15 backdrop-blur-xs rounded-full text-[11px] font-bold tracking-wider uppercase text-emerald-200">
-                    {aspuri.code} • Asrama Putri
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-200/90">
-                    {aspuri.locationArea}
-                  </span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  {aspuri.name}
-                </h3>
-                <p className="mt-2 text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
-                  {aspuri.description}
-                </p>
-              </div>
+        {/* ASPURI LEDGER */}
+        <div className="md:pl-8 pt-8 md:pt-0 flex flex-col justify-between">
+          <div>
+            <div className="flex items-baseline justify-between border-b border-line pb-2 mb-4">
+              <span className="text-xs font-bold text-forest tracking-wider uppercase">
+                {aspuri.code}
+              </span>
+              <span className="text-[11px] text-ink-subtle">{aspuri.locationArea}</span>
+            </div>
+            <h3 className="font-serif text-[22px] sm:text-2xl text-ink font-bold mb-2">
+              {aspuri.name}
+            </h3>
+            <p className="text-[14px] sm:text-xs text-ink/80 leading-[1.65] mb-4">
+              {aspuri.description}
+            </p>
 
-              {/* Feature Tags */}
-              <div className="p-6 sm:p-8 pb-4">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {aspuri.features.map((feat, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-700"
-                    >
-                      ✓ {feat}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Structured Metadata Rows */}
-                <div className="space-y-4 text-xs sm:text-sm">
-                  {/* Address */}
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-forest block mb-1">
-                      Alamat Lengkap
-                    </span>
-                    <p className="text-slate-800 font-medium leading-snug">
-                      {aspuri.fullAddress}
-                    </p>
-                  </div>
-
-                  {/* Landmark */}
-                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-forest block mb-1">
-                      Titik Patokan Akses
-                    </span>
-                    <p className="text-slate-800 font-medium leading-snug">
-                      {aspuri.landmark}
-                    </p>
-                  </div>
-
-                  {/* Security & Room specs */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-forest block mb-0.5">
-                        Jam Malam &amp; Keamanan
-                      </span>
-                      <span className="text-xs font-medium text-slate-800">
-                        {aspuri.curfewAndSecurity}
-                      </span>
-                    </div>
-                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
-                      <span className="text-[10px] font-bold tracking-wider uppercase text-forest block mb-0.5">
-                        Kapasitas Kamar
-                      </span>
-                      <span className="text-xs font-medium text-slate-800">
-                        {aspuri.roomCapacity}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Key badges */}
+            <div className="flex flex-wrap gap-1.5 mb-5">
+              {aspuri.features.map((feat, idx) => (
+                <span
+                  key={idx}
+                  className="inline-block text-[11px] px-2 py-0.5 border border-line bg-white text-ink-muted font-medium"
+                >
+                  • {feat}
+                </span>
+              ))}
             </div>
 
-            {/* Card Footer Actions */}
-            <div className="p-6 sm:p-8 pt-0 space-y-2.5">
-              <a
-                className="flex items-center justify-center gap-2 w-full py-3.5 px-5 bg-forest hover:bg-forest-deep text-white text-xs sm:text-sm font-bold rounded-full shadow-sm hover:shadow-md transition-all text-center"
-                href={generateWhatsAppUrl(aspuri.whatsappNumber, aspuriWaText)}
-                rel="noopener noreferrer"
-                target="_blank"
+            {/* Metadata Ledger */}
+            <dl className="text-xs divide-y divide-line/70 border-t border-b border-line mb-6">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Alamat Lengkap</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right max-w-xs leading-snug">
+                  {aspuri.fullAddress}
+                </dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Resmi Google Maps</dt>
+                <dd className="text-forest font-medium sm:text-right text-[13.5px] sm:text-xs">
+                  <a
+                    href={aspuri.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-ink font-semibold inline-flex items-center gap-1"
+                  >
+                    <span>ASPURI HPMT Jeneponto</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Patokan</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.landmark}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Keamanan &amp; Jam Malam</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.curfewAndSecurity}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Kapasitas Kamar</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.roomCapacity}</dd>
+              </div>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
+                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Koordinator Narahubung</dt>
+                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.coordinatorTitle}</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="pt-2 space-y-2">
+            <a
+              className="inline-flex items-center justify-between w-full p-3 border border-forest text-xs font-semibold text-forest hover:bg-forest hover:text-paper transition-all focus:outline-none focus:ring-1 focus:ring-forest"
+              href={generateWhatsAppUrl(aspuri.whatsappNumber, aspuriWaText)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <span>Hubungi Pengurus Aspuri via WhatsApp</span>
+              <span className="font-mono text-xs">{aspuri.coordinatorPhone} →</span>
+            </a>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <button
+                type="button"
+                onClick={() => onSelectUnitForRegistration('aspuri')}
+                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
               >
-                <span>Hubungi Koordinator Aspuri via WhatsApp</span>
-                <span className="font-mono text-xs opacity-90">({aspuri.coordinatorPhone}) →</span>
-              </a>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <a
-                  className="flex items-center justify-center gap-1.5 py-2.5 px-4 bg-white border border-slate-200 hover:border-slate-300 text-slate-700 text-xs font-semibold rounded-full transition-colors text-center shadow-2xs"
-                  href={aspuri.googleMapsUrl}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <svg className="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                  </svg>
-                  <span>Titik Google Maps</span>
-                </a>
+                Isi Formulir Minat Aspuri
+              </button>
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
                 <button
                   type="button"
-                  onClick={() => triggerRegistration('aspuri')}
-                  className="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold rounded-full transition-colors cursor-pointer"
+                  onClick={() => setActiveMapUnit(activeMapUnit === 'aspuri' ? null : 'aspuri')}
+                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
+                  title="Buka / Tutup Peta Interaktif"
                 >
-                  Ajukan Kamar Aspuri
+                  {activeMapUnit === 'aspuri' ? 'Tutup Peta' : 'Lihat Peta'}
                 </button>
+                <a
+                  href={aspuri.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
+                  title="Buka lokasi resmi ASPURI HPMT Jeneponto di Google Maps"
+                >
+                  Google Maps ↗
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* EMBEDDED INTERACTIVE MAP SECTION */}
+      {activeMapUnit && (
+        <div className="mt-8 border border-line bg-white p-4 sm:p-5 rounded-xs shadow-xs animate-in fade-in duration-200">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-line gap-2 mb-4">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-forest block">
+                Peta Lokasi Resmi
+              </span>
+              <h4 className="font-serif text-base font-semibold text-ink">
+                {activeMapUnit === 'aspuri'
+                  ? 'ASPURI HPMT Jeneponto — Minasaupa / Kumala'
+                  : 'ASPURA HPMT Jeneponto — Jl. Anggrek I No. 15, Panakkukang'}
+              </h4>
+              <p className="text-xs text-ink-muted">
+                {activeMapUnit === 'aspuri'
+                  ? 'Koordinat: -5.1859121, 119.4510155 (Titik Resmi Google Maps)'
+                  : 'Koordinat: Panakkukang, Makassar'}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={activeMapUnit === 'aspuri' ? aspuri.googleMapsUrl : aspura.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Buka di Google Maps Langsung</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setActiveMapUnit(null)}
+                className="px-2.5 py-1.5 border border-line bg-paper text-xs hover:bg-paper-muted"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+
+          <div className="w-full aspect-[16/9] sm:aspect-[21/9] bg-paper-muted border border-line overflow-hidden relative">
+            <iframe
+              title={`Peta Lokasi ${activeMapUnit === 'aspuri' ? 'ASPURI' : 'ASPURA'} HPMT Jeneponto`}
+              src={activeMapUnit === 'aspuri' ? aspuri.embedMapUrl : aspura.embedMapUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p className="text-[11px] text-ink-subtle mt-2 italic text-right">
+            Gunakan navigasi peta untuk petunjuk rute jalan dan transportasi menuju wisma.
+          </p>
+        </div>
+      )}
     </section>
   );
 };

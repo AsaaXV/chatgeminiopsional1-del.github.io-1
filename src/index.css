@@ -1,42 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #ffffff;
-  --color-paper-subtle: #f8fafc;
-  --color-paper-muted: #f1f5f9;
-  --color-paper-dark: #e2e8f0;
-  --color-ink: #0f172a;
-  --color-ink-muted: #475569;
-  --color-ink-subtle: #64748b;
-  --color-forest: #0d4f36;
-  --color-forest-deep: #062b1d;
-  --color-forest-light: #15803d;
-  --color-brand-blue: #2563eb;
-  --color-brand-emerald: #059669;
-  --color-clay: #b45309;
-  --color-line: #e2e8f0;
+  --color-paper: #f7f4ed;
+  --color-paper-subtle: #f2eee3;
+  --color-paper-muted: #ebe6d8;
+  --color-paper-dark: #ded8c7;
+  --color-ink: #1c221e;
+  --color-ink-muted: #556059;
+  --color-ink-subtle: #7d8b82;
+  --color-forest: #143a2d;
+  --color-forest-deep: #0c261e;
+  --color-forest-light: #1b4d3e;
+  --color-clay: #8f5727;
+  --color-line: #d8d2c4;
 
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #f7f4ed;
+  color: #1c221e;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
 
-.bg-dot-pattern {
-  background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
-  background-size: 20px 20px;
-}
-
-.bg-dot-pattern-dark {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
-  background-size: 20px 20px;
+.rule-dotted {
+  background-image: linear-gradient(to right, #d8d2c4 40%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
 }
 
 .pb-safe {
