@@ -56,7 +56,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             Asrama HPMT Jeneponto
           </h1>
           <p className="text-[#baeed9]/70 text-xs sm:text-sm mt-2 italic font-serif">
-            "Siriganti Pacce ri Butta Turatea"
+            "Siri' na Pacce ri Butta Turatea"
           </p>
         </div>
 

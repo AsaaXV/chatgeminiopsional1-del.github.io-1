@@ -1,6 +1,6 @@
 # Asrama Mahasiswa HPMT Jeneponto di Makassar
 
-> **"Siriganti Pacce ri Butta Turatea"** — Ruang hidup, berteduh, dan silaturahmi mahasiswa Kabupaten Jeneponto yang menempuh pendidikan di Kota Makassar, Sulawesi Selatan.
+> **"Siri' na Pacce ri Butta Turatea"** — Ruang hidup, berteduh, dan silaturahmi mahasiswa Kabupaten Jeneponto yang menempuh pendidikan di Kota Makassar, Sulawesi Selatan.
 
 Website resmi direktori dan panduan warga **Asrama Mahasiswa HPMT (Himpunan Pelajar Mahasiswa Turatea) Jeneponto**, mencakup unit **Asrama Putra (Aspura)** di Panakkukang dan **Asrama Putri (Aspuri)** di Minasaupa.
 
@@ -148,4 +148,4 @@ Repositori ini telah dikonfigurasi secara otomatis agar siap berjalan di **GitHu
 
 ---
 
-*“Siriganti Pacce ri Butta Turatea — Rawat Persaudaraan, Junjung Tinggi Martabat di Tanah Rantau.”*
+*“Siri' na Pacce ri Butta Turatea — Rawat Persaudaraan, Junjung Tinggi Martabat di Tanah Rantau.”*

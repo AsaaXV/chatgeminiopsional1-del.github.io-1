@@ -18,7 +18,7 @@ export const ManifestoSection: React.FC = () => {
             Nilai Pegangan Butta Turatea
           </span>
           <h2 className="font-serif text-[24px] sm:text-3xl lg:text-4xl italic font-bold text-white leading-tight">
-            "Siriganti Pacce ri Butta Turatea"
+            "Siri' na Pacce ri Butta Turatea"
           </h2>
           <div className="w-16 h-0.5 bg-[#baeed9]/50 mx-auto mt-4" aria-hidden="true" />
         </div>

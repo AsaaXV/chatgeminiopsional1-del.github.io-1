@@ -28,7 +28,7 @@ export const CivicFooter: React.FC = () => {
               Berakar pada kebersamaan tulus, kemandirian pemuda, dan tanggung jawab kultural Butta Turatea.
             </p>
             <p className="font-serif italic text-forest text-xs pt-1">
-              “Siriganti Pacce ri Butta Turatea — Martabat dan Kebersamaan di Tanah Rantau.”
+              “Siri' na Pacce ri Butta Turatea — Martabat dan Kebersamaan di Tanah Rantau.”
             </p>
           </div>
 
