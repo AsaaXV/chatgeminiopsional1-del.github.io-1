@@ -9,7 +9,7 @@ export const ManifestoSection: React.FC = () => {
     <section
       id="manifesto-filosofi"
       ref={ref as React.RefObject<HTMLElement>}
-      className={`border-y border-line bg-forest text-paper py-14 sm:py-18 reveal-fade ${visible ? 'visible' : ''}`}
+      className={`border-y border-line bg-gradient-to-b from-forest to-forest-deep text-paper py-16 sm:py-20 reveal-fade ${visible ? 'visible' : ''}`}
     >
       <div className="max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}

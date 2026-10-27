@@ -6,7 +6,7 @@ export const ContactSection: React.FC = () => {
   const { ref, visible } = useScrollReveal({ threshold: 0.06 });
   return (
     <section className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 reveal ${visible ? "visible" : ""}`} id="kontak-silaturahmi" ref={ref as React.RefObject<HTMLElement>}>
-      <div className="border border-line bg-paper p-6 sm:p-10 shadow-xs">
+      <div className="border border-line bg-white/90 rounded-2xl p-6 sm:p-10 shadow-xs">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">
             <div className="flex items-center gap-2 mb-1">
@@ -26,7 +26,7 @@ export const ContactSection: React.FC = () => {
             {/* Structured Contact Units for Aspura & Aspuri */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-5">
               {/* ASPURA Card */}
-              <div className="p-4 sm:p-5 border border-line bg-paper-subtle flex flex-col justify-between">
+              <div className="p-5 border border-line bg-paper/60 rounded-xl flex flex-col justify-between hover:border-forest/40 transition-all">
                 <div className="mb-3">
                   <div className="flex items-center justify-between gap-1 mb-1">
                     <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-forest">
@@ -43,7 +43,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div className="space-y-2 pt-2.5 border-t border-line/60">
                   <a
-                    className="flex items-center justify-between w-full min-h-[44px] px-3.5 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-colors"
+                    className="flex items-center justify-between w-full min-h-[44px] px-4 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold rounded-lg hover:bg-forest-deep transition-colors shadow-xs"
                     href="https://wa.me/6285240389682?text=Tabe'%20Pengurus%20Aspura%20HPMT,%20saya%20ingin%20bertanya%20mengenai%20kamar/kunjungan%20asrama."
                     rel="noopener noreferrer"
                     target="_blank"
@@ -52,7 +52,7 @@ export const ContactSection: React.FC = () => {
                     <span className="text-[11px]" aria-hidden="true">→</span>
                   </a>
                   <a
-                    className="flex items-center justify-between w-full min-h-[40px] px-3.5 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium transition-colors"
+                    className="flex items-center justify-between w-full min-h-[40px] px-4 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium rounded-lg transition-colors"
                     href="https://www.google.com/maps/place/Aspura+hpmt+kab+jeneponto/data=!4m2!3m1!1s0x0:0x4ca1b970d4be393c"
                     rel="noopener noreferrer"
                     target="_blank"
@@ -64,7 +64,7 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* ASPURI Card */}
-              <div className="p-4 sm:p-5 border border-line bg-paper-subtle flex flex-col justify-between">
+              <div className="p-5 border border-line bg-paper/60 rounded-xl flex flex-col justify-between hover:border-forest/40 transition-all">
                 <div className="mb-3">
                   <div className="flex items-center justify-between gap-1 mb-1">
                     <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-forest">
@@ -81,7 +81,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div className="space-y-2 pt-2.5 border-t border-line/60">
                   <a
-                    className="flex items-center justify-between w-full min-h-[44px] px-3.5 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold hover:bg-forest-deep transition-colors"
+                    className="flex items-center justify-between w-full min-h-[44px] px-4 py-2.5 bg-forest text-paper text-xs sm:text-sm font-semibold rounded-lg hover:bg-forest-deep transition-colors shadow-xs"
                     href="https://wa.me/6285397142677?text=Tabe'%20Pengurus%20Aspuri%20HPMT,%20saya%20ingin%20bertanya%20mengenai%20kamar/kunjungan%20asrama."
                     rel="noopener noreferrer"
                     target="_blank"
@@ -90,7 +90,7 @@ export const ContactSection: React.FC = () => {
                     <span className="text-[11px]" aria-hidden="true">→</span>
                   </a>
                   <a
-                    className="flex items-center justify-between w-full min-h-[40px] px-3.5 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium transition-colors"
+                    className="flex items-center justify-between w-full min-h-[40px] px-4 py-2 bg-white border border-line hover:border-forest text-ink hover:text-forest text-xs font-medium rounded-lg transition-colors"
                     href="https://www.google.com/maps/place/ASPURI+HPMT+Jeneponto/@-5.1859121,119.4510155,17z/data=!3m1!4b1!4m6!3m5!1s0x2dbee34142ed09d5:0xc905943bb19149b7!8m2!3d-5.1859121!4d119.4510155!16s%2Fg%2F11h0h1vsyq"
                     rel="noopener noreferrer"
                     target="_blank"

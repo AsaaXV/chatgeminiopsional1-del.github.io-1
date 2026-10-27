@@ -34,7 +34,7 @@ export const FaqSection: React.FC = () => {
       </div>
 
       <div
-        className={`divide-y divide-line border-t border-b border-line bg-paper reveal delay-200 ${visible ? 'visible' : ''}`}
+        className={`divide-y divide-line border border-line bg-white/80 rounded-2xl p-4 sm:p-6 shadow-xs reveal delay-200 ${visible ? 'visible' : ''}`}
       >
         {FAQ_ITEMS.map((item, index) => {
           const isOpen = openIndex === index;
@@ -47,7 +47,7 @@ export const FaqSection: React.FC = () => {
                 className="w-full flex items-center justify-between text-left gap-4 font-serif text-[16px] sm:text-lg font-bold text-ink hover:text-forest active:text-forest transition-colors cursor-pointer"
               >
                 <span className="leading-snug">{item.question}</span>
-                <span className={`min-w-[30px] min-h-[30px] flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-white transition-all duration-200 ${isOpen ? 'bg-forest text-paper border-forest' : ''}`}>
+                <span className={`min-w-[32px] min-h-[32px] rounded-full flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-paper transition-all duration-200 ${isOpen ? 'bg-forest text-paper border-forest' : ''}`}>
                   {isOpen ? '−' : '+'}
                 </span>
               </button>

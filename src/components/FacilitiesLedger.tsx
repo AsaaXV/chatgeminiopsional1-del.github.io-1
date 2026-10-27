@@ -25,7 +25,7 @@ export const FacilitiesLedger: React.FC = () => {
             </h2>
           </div>
           <div className="lg:col-span-7">
-            <div className="p-4 sm:p-5 bg-paper border border-forest/30 rounded-xs text-[14px] sm:text-sm text-ink/85 leading-[1.65]">
+            <div className="p-4 sm:p-5 bg-white/90 border border-forest/20 rounded-2xl shadow-xs text-[14px] sm:text-sm text-ink/85 leading-[1.65]">
               <strong className="text-forest font-bold text-[15px] sm:text-base block mb-1.5">
                 Ketentuan Masuk &amp; Status Biaya Wisma:
               </strong>
@@ -45,7 +45,7 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('all')}
-              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-lg font-semibold cursor-pointer transition-all ${
                 selectedCategory === 'all'
                   ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'
@@ -56,7 +56,7 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('pokok')}
-              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-lg font-semibold cursor-pointer transition-all ${
                 selectedCategory === 'pokok'
                   ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'
@@ -67,7 +67,7 @@ export const FacilitiesLedger: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedCategory('iuran')}
-              className={`min-h-[38px] px-3.5 py-1.5 rounded-xs font-semibold cursor-pointer transition-colors ${
+              className={`min-h-[38px] px-3.5 py-1.5 rounded-lg font-semibold cursor-pointer transition-all ${
                 selectedCategory === 'iuran'
                   ? 'bg-forest text-paper'
                   : 'bg-paper border border-line text-ink hover:bg-paper-muted'

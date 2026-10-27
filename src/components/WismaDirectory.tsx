@@ -18,95 +18,105 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
   const aspuriWaText = "Tabe' Pengurus Aspuri HPMT, saya ingin bertanya mengenai ketersediaan kamar dan jadwal sowan silaturahmi ke asrama putri.";
 
   return (
-    <section className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 reveal ${headerVisible ? "visible" : ""}`} id="dua-wisma" ref={headerRef as React.RefObject<HTMLElement>}>
-      <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line gap-4 mb-8">
+    <section
+      className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 reveal ${
+        headerVisible ? 'visible' : ''
+      }`}
+      id="dua-wisma"
+      ref={headerRef as React.RefObject<HTMLElement>}
+    >
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line gap-4 mb-10">
         <div>
-          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
-            Dua Unit Domisili
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-forest block mb-1">
+            Dua Unit Domisili Mahasiswa
           </span>
-          <h2 className="font-serif text-[24px] sm:text-3xl text-ink font-bold">
-            Buku Direktori Wisma Mahasiswa
+          <h2 className="font-serif text-2xl sm:text-4xl text-ink font-bold">
+            Buku Direktori Wisma Asrama
           </h2>
         </div>
-        <p className="text-[14px] sm:text-xs text-ink/80 max-w-md leading-relaxed">
-          Pengelolaan asrama dibagi menjadi dua lokasi independen untuk menjaga kenyamanan, ketertiban, dan privasi warga putra maupun putri.
+        <p className="text-sm text-ink/80 max-w-lg leading-relaxed">
+          Pengelolaan asrama dibagi menjadi dua lokasi independen untuk menjaga ketertiban, kenyamanan, dan privasi warga putra maupun putri.
         </p>
       </div>
 
-      {/* Two Dignified Column Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-line">
-        {/* ASPURA LEDGER */}
-        <div className="md:pr-8 pt-4 md:pt-0 flex flex-col justify-between">
+      {/* Two Modern Cards Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        {/* ── ASPURA CARD ── */}
+        <div className="bg-white/90 border border-line rounded-2xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
           <div>
-            <div className="flex items-baseline justify-between border-b border-line pb-2 mb-4">
-              <span className="text-xs font-bold text-forest tracking-wider uppercase">
-                {aspura.code}
+            {/* Header Badge */}
+            <div className="flex items-center justify-between gap-2 border-b border-line pb-3 mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-forest/10 text-forest uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-forest" />
+                {aspura.code} • Wisma Putra
               </span>
-              <span className="text-[11px] text-ink-subtle">{aspura.locationArea}</span>
+              <span className="text-xs text-ink-subtle font-medium">{aspura.locationArea}</span>
             </div>
-            <h3 className="font-serif text-[22px] sm:text-2xl text-ink font-bold mb-2">
+
+            <h3 className="font-serif text-2xl sm:text-3xl text-ink font-bold mb-2.5">
               {aspura.name}
             </h3>
-            <p className="text-[14px] sm:text-xs text-ink/80 leading-[1.65] mb-4">
+            <p className="text-sm text-ink/80 leading-relaxed mb-5">
               {aspura.description}
             </p>
 
-            {/* Key badges */}
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-2 mb-6">
               {aspura.features.map((feat, idx) => (
                 <span
                   key={idx}
-                  className="inline-block text-[11px] px-2 py-0.5 border border-line bg-white text-ink-muted font-medium"
+                  className="inline-flex items-center text-xs px-3 py-1 rounded-md bg-paper border border-line text-ink-muted font-medium"
                 >
-                  • {feat}
+                  ✓ {feat}
                 </span>
               ))}
             </div>
 
-            {/* Metadata Ledger */}
+            {/* Metadata Table */}
             <dl className="text-xs divide-y divide-line/70 border-t border-b border-line mb-6">
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Alamat Lengkap</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right max-w-xs leading-snug">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Alamat Lengkap</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right max-w-sm leading-snug">
                   {aspura.fullAddress}
                 </dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Resmi Google Maps</dt>
-                <dd className="text-forest font-medium sm:text-right text-[13.5px] sm:text-xs">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Titik Google Maps</dt>
+                <dd className="text-xs font-semibold text-forest sm:text-right">
                   <a
                     href={aspura.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-ink font-semibold inline-flex items-center gap-1"
+                    className="underline hover:text-ink inline-flex items-center gap-1"
                   >
-                    <span>Aspura hpmt kab jeneponto</span>
-                    <span aria-hidden="true">↗</span>
+                    <span>Aspura hpmt kab jeneponto ↗</span>
                   </a>
                 </dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Patokan</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.landmark}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Titik Patokan</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspura.landmark}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Keamanan &amp; Jam Malam</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.curfewAndSecurity}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Keamanan &amp; Jam Malam</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspura.curfewAndSecurity}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Kapasitas Kamar</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.roomCapacity}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Kapasitas Kamar</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspura.roomCapacity}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Koordinator Narahubung</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspura.coordinatorTitle}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-forest">Narahubung</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspura.coordinatorTitle}</dd>
               </div>
             </dl>
           </div>
 
-          <div className="pt-2 space-y-2">
+          {/* Action Buttons */}
+          <div className="pt-2 space-y-3">
             <a
-              className="inline-flex items-center justify-between w-full p-3 border border-forest text-xs font-semibold text-forest hover:bg-forest hover:text-paper transition-all focus:outline-none focus:ring-1 focus:ring-forest"
+              className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-emerald-800/10 hover:bg-emerald-800/20 text-emerald-900 border border-emerald-800/20 text-xs sm:text-sm font-semibold transition-all"
               href={generateWhatsAppUrl(aspura.whatsappNumber, aspuraWaText)}
               rel="noopener noreferrer"
               target="_blank"
@@ -114,20 +124,20 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               <span>Hubungi Pengurus Aspura via WhatsApp</span>
               <span className="font-mono text-xs">{aspura.coordinatorPhone} →</span>
             </a>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+
+            <div className="flex flex-col sm:flex-row items-stretch gap-2.5">
               <button
                 type="button"
                 onClick={() => onSelectUnitForRegistration('aspura')}
-                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
+                className="flex-1 min-h-[46px] py-2.5 px-4 text-center text-xs sm:text-sm font-bold bg-forest text-paper hover:bg-forest-deep rounded-lg transition-all shadow-xs cursor-pointer"
               >
-                Isi Formulir Minat Aspura
+                Isi Formulir Minat Aspura →
               </button>
               <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
                 <button
                   type="button"
                   onClick={() => setActiveMapUnit(activeMapUnit === 'aspura' ? null : 'aspura')}
-                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
-                  title="Buka / Tutup Peta Interaktif"
+                  className="min-h-[46px] px-3.5 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest rounded-lg transition-colors cursor-pointer"
                 >
                   {activeMapUnit === 'aspura' ? 'Tutup Peta' : 'Lihat Peta'}
                 </button>
@@ -135,88 +145,90 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
                   href={aspura.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
-                  title="Buka lokasi resmi Aspura hpmt kab jeneponto di Google Maps"
+                  className="min-h-[46px] flex items-center justify-center px-3.5 py-2 text-center text-xs border border-forest/30 bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold rounded-lg transition-colors"
                 >
-                  Google Maps ↗
+                  Maps ↗
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ASPURI LEDGER */}
-        <div className="md:pl-8 pt-8 md:pt-0 flex flex-col justify-between">
+        {/* ── ASPURI CARD ── */}
+        <div className="bg-white/90 border border-line rounded-2xl p-6 sm:p-8 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
           <div>
-            <div className="flex items-baseline justify-between border-b border-line pb-2 mb-4">
-              <span className="text-xs font-bold text-forest tracking-wider uppercase">
-                {aspuri.code}
+            {/* Header Badge */}
+            <div className="flex items-center justify-between gap-2 border-b border-line pb-3 mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#8f5727]/10 text-[#8f5727] uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-[#8f5727]" />
+                {aspuri.code} • Wisma Putri
               </span>
-              <span className="text-[11px] text-ink-subtle">{aspuri.locationArea}</span>
+              <span className="text-xs text-ink-subtle font-medium">{aspuri.locationArea}</span>
             </div>
-            <h3 className="font-serif text-[22px] sm:text-2xl text-ink font-bold mb-2">
+
+            <h3 className="font-serif text-2xl sm:text-3xl text-ink font-bold mb-2.5">
               {aspuri.name}
             </h3>
-            <p className="text-[14px] sm:text-xs text-ink/80 leading-[1.65] mb-4">
+            <p className="text-sm text-ink/80 leading-relaxed mb-5">
               {aspuri.description}
             </p>
 
-            {/* Key badges */}
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-2 mb-6">
               {aspuri.features.map((feat, idx) => (
                 <span
                   key={idx}
-                  className="inline-block text-[11px] px-2 py-0.5 border border-line bg-white text-ink-muted font-medium"
+                  className="inline-flex items-center text-xs px-3 py-1 rounded-md bg-paper border border-line text-ink-muted font-medium"
                 >
-                  • {feat}
+                  ✓ {feat}
                 </span>
               ))}
             </div>
 
-            {/* Metadata Ledger */}
+            {/* Metadata Table */}
             <dl className="text-xs divide-y divide-line/70 border-t border-b border-line mb-6">
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Alamat Lengkap</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right max-w-xs leading-snug">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Alamat Lengkap</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right max-w-sm leading-snug">
                   {aspuri.fullAddress}
                 </dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Resmi Google Maps</dt>
-                <dd className="text-forest font-medium sm:text-right text-[13.5px] sm:text-xs">
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Titik Google Maps</dt>
+                <dd className="text-xs font-semibold text-[#8f5727] sm:text-right">
                   <a
                     href={aspuri.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline hover:text-ink font-semibold inline-flex items-center gap-1"
+                    className="underline hover:text-ink inline-flex items-center gap-1"
                   >
-                    <span>ASPURI HPMT Jeneponto</span>
-                    <span aria-hidden="true">↗</span>
+                    <span>ASPURI HPMT Jeneponto ↗</span>
                   </a>
                 </dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Titik Patokan</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.landmark}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Titik Patokan</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspuri.landmark}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Keamanan &amp; Jam Malam</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.curfewAndSecurity}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Keamanan &amp; Jam Malam</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspuri.curfewAndSecurity}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Kapasitas Kamar</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.roomCapacity}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Kapasitas Kamar</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspuri.roomCapacity}</dd>
               </div>
-              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4">
-                <dt className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-forest">Koordinator Narahubung</dt>
-                <dd className="text-[13.5px] sm:text-xs text-ink font-medium sm:text-right">{aspuri.coordinatorTitle}</dd>
+              <div className="py-2.5 flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+                <dt className="text-xs uppercase font-bold tracking-wider text-[#8f5727]">Narahubung</dt>
+                <dd className="text-xs text-ink font-medium sm:text-right">{aspuri.coordinatorTitle}</dd>
               </div>
             </dl>
           </div>
 
-          <div className="pt-2 space-y-2">
+          {/* Action Buttons */}
+          <div className="pt-2 space-y-3">
             <a
-              className="inline-flex items-center justify-between w-full p-3 border border-forest text-xs font-semibold text-forest hover:bg-forest hover:text-paper transition-all focus:outline-none focus:ring-1 focus:ring-forest"
+              className="flex items-center justify-between w-full px-4 py-3 rounded-lg bg-emerald-800/10 hover:bg-emerald-800/20 text-emerald-900 border border-emerald-800/20 text-xs sm:text-sm font-semibold transition-all"
               href={generateWhatsAppUrl(aspuri.whatsappNumber, aspuriWaText)}
               rel="noopener noreferrer"
               target="_blank"
@@ -224,20 +236,20 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               <span>Hubungi Pengurus Aspuri via WhatsApp</span>
               <span className="font-mono text-xs">{aspuri.coordinatorPhone} →</span>
             </a>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+
+            <div className="flex flex-col sm:flex-row items-stretch gap-2.5">
               <button
                 type="button"
                 onClick={() => onSelectUnitForRegistration('aspuri')}
-                className="flex-1 min-h-[44px] py-2.5 px-3 text-center text-xs font-semibold bg-forest text-paper hover:bg-forest-deep transition-colors cursor-pointer"
+                className="flex-1 min-h-[46px] py-2.5 px-4 text-center text-xs sm:text-sm font-bold bg-forest text-paper hover:bg-forest-deep rounded-lg transition-all shadow-xs cursor-pointer"
               >
-                Isi Formulir Minat Aspuri
+                Isi Formulir Minat Aspuri →
               </button>
               <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center">
                 <button
                   type="button"
                   onClick={() => setActiveMapUnit(activeMapUnit === 'aspuri' ? null : 'aspuri')}
-                  className="min-h-[44px] px-3 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest transition-colors cursor-pointer"
-                  title="Buka / Tutup Peta Interaktif"
+                  className="min-h-[46px] px-3.5 py-2 text-center text-xs border border-line bg-white hover:border-forest text-ink hover:text-forest rounded-lg transition-colors cursor-pointer"
                 >
                   {activeMapUnit === 'aspuri' ? 'Tutup Peta' : 'Lihat Peta'}
                 </button>
@@ -245,10 +257,9 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
                   href={aspuri.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[44px] flex items-center justify-center px-3 py-2 text-center text-xs border border-forest bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold transition-colors"
-                  title="Buka lokasi resmi ASPURI HPMT Jeneponto di Google Maps"
+                  className="min-h-[46px] flex items-center justify-center px-3.5 py-2 text-center text-xs border border-forest/30 bg-forest/5 hover:bg-forest hover:text-paper text-forest font-semibold rounded-lg transition-colors"
                 >
-                  Google Maps ↗
+                  Maps ↗
                 </a>
               </div>
             </div>
@@ -256,31 +267,26 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
         </div>
       </div>
 
-      {/* EMBEDDED INTERACTIVE MAP SECTION */}
+      {/* Embedded Interactive Map */}
       {activeMapUnit && (
-        <div className="mt-8 border border-line bg-white p-4 sm:p-5 rounded-xs shadow-xs animate-in fade-in duration-200">
+        <div className="mt-8 border border-line bg-white p-5 rounded-2xl shadow-xs animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-line gap-2 mb-4">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-widest text-forest block">
                 Peta Lokasi Resmi
               </span>
-              <h4 className="font-serif text-base font-semibold text-ink">
+              <h4 className="font-serif text-lg font-semibold text-ink">
                 {activeMapUnit === 'aspuri'
                   ? 'ASPURI HPMT Jeneponto — Minasaupa / Kumala'
                   : 'ASPURA HPMT Jeneponto — Jl. Anggrek I No. 15, Panakkukang'}
               </h4>
-              <p className="text-xs text-ink-muted">
-                {activeMapUnit === 'aspuri'
-                  ? 'Koordinat: -5.1859121, 119.4510155 (Titik Resmi Google Maps)'
-                  : 'Koordinat: Panakkukang, Makassar'}
-              </p>
             </div>
             <div className="flex items-center gap-2">
               <a
                 href={activeMapUnit === 'aspuri' ? aspuri.googleMapsUrl : aspura.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-forest text-paper text-xs font-semibold hover:bg-forest-deep transition-colors inline-flex items-center gap-1.5"
+                className="px-3.5 py-2 bg-forest text-paper text-xs font-semibold rounded-lg hover:bg-forest-deep transition-colors inline-flex items-center gap-1.5"
               >
                 <span>Buka di Google Maps Langsung</span>
                 <span aria-hidden="true">↗</span>
@@ -288,14 +294,14 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               <button
                 type="button"
                 onClick={() => setActiveMapUnit(null)}
-                className="px-2.5 py-1.5 border border-line bg-paper text-xs hover:bg-paper-muted"
+                className="px-3 py-2 border border-line bg-paper text-xs rounded-lg hover:bg-paper-muted cursor-pointer font-medium"
               >
                 Tutup
               </button>
             </div>
           </div>
 
-          <div className="w-full aspect-[16/9] sm:aspect-[21/9] bg-paper-muted border border-line overflow-hidden relative">
+          <div className="w-full aspect-[16/9] sm:aspect-[21/9] bg-paper-muted border border-line rounded-xl overflow-hidden relative">
             <iframe
               title={`Peta Lokasi ${activeMapUnit === 'aspuri' ? 'ASPURI' : 'ASPURA'} HPMT Jeneponto`}
               src={activeMapUnit === 'aspuri' ? aspuri.embedMapUrl : aspura.embedMapUrl}
@@ -305,11 +311,8 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
           </div>
-          <p className="text-[11px] text-ink-subtle mt-2 italic text-right">
-            Gunakan navigasi peta untuk petunjuk rute jalan dan transportasi menuju wisma.
-          </p>
         </div>
       )}
     </section>
