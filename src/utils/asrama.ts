@@ -54,7 +54,7 @@ export function formatRegistrationMessage(data: RegistrationFormData): string {
     `• Pilihan Unit: ${targetUnit}\n` +
     `• Ketentuan Masuk: Bersedia membayar kontribusi fasilitas Rp1.500.000 (sekali bayar sampai lulus kuliah / bebas biaya sewa)\n` +
     (data.notes ? `• Catatan Khusus / Pertanyaan: ${data.notes}\n` : '') +
-    `\nMohon petunjuk ketersediaan kamar, jadwal sowan ke asrama, dan berkas yang perlu disiapkan. Kurru' Sumange', terima kasih banyak.`
+    `\nMohon petunjuk ketersediaan kamar, jadwal sowan ke asrama, dan berkas yang perlu disiapkan. Tabe', terima kasih banyak.`
   );
 }
 
