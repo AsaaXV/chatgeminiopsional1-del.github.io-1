@@ -18,7 +18,7 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
   const aspuriWaText = "Tabe' Pengurus Aspuri HPMT, saya ingin bertanya mengenai ketersediaan kamar dan jadwal sowan silaturahmi ke asrama putri.";
 
   return (
-    <section className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 reveal ${headerVisible ? "visible" : ""}`} id="dua-wisma" ref={headerRef as React.RefObject<HTMLElement>}>
+    <section className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 reveal ${headerVisible ? "visible" : ""}`} id="dua-wisma" ref={headerRef as React.RefObject<HTMLElement>}>
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line gap-4 mb-8">
         <div>
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">

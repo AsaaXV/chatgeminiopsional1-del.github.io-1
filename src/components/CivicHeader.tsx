@@ -32,7 +32,7 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
         scrolled ? 'shadow-xs py-2.5' : 'py-3'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center justify-between gap-4">
           {/* Logo & Judul Simpel */}
           <a

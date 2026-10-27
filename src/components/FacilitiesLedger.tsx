@@ -14,7 +14,7 @@ export const FacilitiesLedger: React.FC = () => {
 
   return (
     <section className={`border-t border-line bg-paper-subtle py-16 reveal ${visible ? "visible" : ""}`} id="kehidupan-fasilitas" ref={ref as React.RefObject<HTMLElement>}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           <div className="lg:col-span-5">
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">

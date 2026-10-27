@@ -5,7 +5,7 @@ import { OFFICIAL_LOGOS } from '../data/dormitoryData.ts';
 export const ContactSection: React.FC = () => {
   const { ref, visible } = useScrollReveal({ threshold: 0.06 });
   return (
-    <section className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 reveal ${visible ? "visible" : ""}`} id="kontak-silaturahmi" ref={ref as React.RefObject<HTMLElement>}>
+    <section className={`max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 reveal ${visible ? "visible" : ""}`} id="kontak-silaturahmi" ref={ref as React.RefObject<HTMLElement>}>
       <div className="border border-line bg-paper p-6 sm:p-10 shadow-xs">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7">

@@ -12,7 +12,7 @@ export const FaqSection: React.FC = () => {
 
   return (
     <section
-      className="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-line"
+      className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-16 border-t border-line"
       id="alur-pendaftaran"
       ref={ref as React.RefObject<HTMLElement>}
     >

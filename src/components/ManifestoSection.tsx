@@ -11,7 +11,7 @@ export const ManifestoSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`border-y border-line bg-forest text-paper py-14 sm:py-18 reveal-fade ${visible ? 'visible' : ''}`}
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header */}
         <div className={`text-center max-w-2xl mx-auto mb-8 reveal ${visible ? 'visible' : ''}`}>
           <span className="text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#baeed9] font-bold block mb-2">
