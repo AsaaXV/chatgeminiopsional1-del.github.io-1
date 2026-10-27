@@ -4,6 +4,7 @@ import { FACILITIES_DATA } from '../data/dormitoryData.ts';
 import { filterFacilities } from '../utils/asrama.ts';
 
 export const FacilitiesLedger: React.FC = () => {
+  const { ref, visible } = useScrollReveal({ threshold: 0.05 });
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -12,7 +13,7 @@ export const FacilitiesLedger: React.FC = () => {
   }, [searchQuery, selectedCategory]);
 
   return (
-    <section className="border-t border-line bg-paper-subtle py-16" id="kehidupan-fasilitas">
+    <section className={`border-t border-line bg-paper-subtle py-16 reveal ${visible ? "visible" : ""}`} id="kehidupan-fasilitas" ref={ref as React.RefObject<HTMLElement>}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           <div className="lg:col-span-5">

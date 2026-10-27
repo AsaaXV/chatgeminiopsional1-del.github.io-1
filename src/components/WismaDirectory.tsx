@@ -9,6 +9,7 @@ interface WismaDirectoryProps {
 
 export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForRegistration }) => {
   const [activeMapUnit, setActiveMapUnit] = useState<'aspura' | 'aspuri' | null>(null);
+  const { ref: headerRef, visible: headerVisible } = useScrollReveal({ threshold: 0.05 });
 
   const aspura = DORMITORY_UNITS.find((u) => u.id === 'aspura')!;
   const aspuri = DORMITORY_UNITS.find((u) => u.id === 'aspuri')!;
@@ -17,7 +18,7 @@ export const WismaDirectory: React.FC<WismaDirectoryProps> = ({ onSelectUnitForR
   const aspuriWaText = "Tabe' Pengurus Aspuri HPMT, saya ingin bertanya mengenai ketersediaan kamar dan jadwal sowan silaturahmi ke asrama putri.";
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16" id="dua-wisma" ref={headerRef as React.RefObject<HTMLElement>}>
+    <section className={`max-w-6xl mx-auto px-4 sm:px-6 py-16 reveal ${headerVisible ? "visible" : ""}`} id="dua-wisma" ref={headerRef as React.RefObject<HTMLElement>}>
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line gap-4 mb-8">
         <div>
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
