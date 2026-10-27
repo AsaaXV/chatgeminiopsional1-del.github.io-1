@@ -9,10 +9,10 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Close menu when user taps outside (scroll or link)
+  // Monitor scroll for shadow and close menu on scroll
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 8);
+      setScrolled(window.scrollY > 12);
       if (mobileMenuOpen) setMobileMenuOpen(false);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -24,138 +24,144 @@ export const CivicHeader: React.FC<CivicHeaderProps> = ({ onOpenRegistration }) 
     { label: 'Direktori Wisma', href: '#dua-wisma' },
     { label: 'Fasilitas & Iuran', href: '#kehidupan-fasilitas' },
     { label: "Siri' na Pacce", href: '#manifesto-filosofi' },
-    { label: 'Alur Warga Baru', href: '#alur-pendaftaran' },
+    { label: 'Alur Warga', href: '#alur-pendaftaran' },
     { label: 'Narahubung', href: '#kontak-silaturahmi' },
   ];
 
   return (
     <header
-      className={`w-full border-b border-line bg-paper sticky top-0 z-30 transition-shadow duration-200 ${
-        scrolled ? 'shadow-md' : 'shadow-xs'
+      className={`w-full sticky top-0 z-40 bg-paper/95 backdrop-blur-md border-b border-line transition-all duration-200 ${
+        scrolled ? 'shadow-sm py-2' : 'py-3 sm:py-3.5'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:pt-5 sm:pb-4">
-        <div className="flex items-center justify-between gap-3 sm:pb-4 sm:border-b sm:border-line">
-          {/* Logo & Civic Seal */}
-          <a href="#" className="flex items-center gap-2.5 sm:gap-3 min-w-0 group">
-            <img
-              alt="Logo Resmi Asrama HPMT Jeneponto"
-              className="w-9 h-9 sm:w-14 sm:h-14 object-contain rounded border border-line bg-white p-0.5 sm:p-1 shrink-0 group-hover:border-forest transition-colors"
-              src={OFFICIAL_LOGOS.emblem}
-              width={56}
-              height={56}
-            />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between gap-4">
+          {/* ── BRAND / LOGO ── */}
+          <a
+            href="#"
+            className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 group"
+            aria-label="Kembali ke Beranda Asrama HPMT Jeneponto"
+          >
+            <div className="relative shrink-0">
+              <img
+                alt="Logo Resmi Asrama HPMT Jeneponto"
+                className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-sm border border-line bg-white p-1 group-hover:border-forest transition-colors shadow-2xs"
+                src={OFFICIAL_LOGOS.emblem}
+                width={48}
+                height={48}
+              />
+            </div>
             <div className="min-w-0">
               <span className="text-[9px] sm:text-[10px] tracking-wider uppercase text-forest font-bold block leading-none mb-0.5">
-                Badan Khusus Asrama • PP HPMT
+                PP HPMT • Jeneponto
               </span>
-              <span className="font-serif text-[15px] sm:text-3xl tracking-tight font-bold text-forest leading-tight group-hover:text-forest-light transition-colors block truncate">
-                Asrama HPMT Jeneponto
+              <span className="font-serif text-[16px] sm:text-2xl font-bold text-forest leading-tight group-hover:text-forest-light transition-colors block truncate">
+                Asrama Mahasiswa
               </span>
-              <p className="text-xs text-ink-muted mt-0.5 font-normal hidden sm:block">
-                Himpunan Pelajar Mahasiswa Turatea — Ruang hidup, berteduh, dan silaturahmi di Makassar.
-              </p>
+              <span className="text-[11px] text-ink-muted hidden sm:block font-sans font-normal truncate">
+                Kota Makassar • Butta Turatea
+              </span>
             </div>
           </a>
 
-          {/* Desktop Nav */}
-          <nav aria-label="Navigasi Utama" className="hidden lg:flex items-center gap-5 text-xs font-medium text-ink">
-            {navLinks.map((link) => (
+          {/* ── DESKTOP NAVIGATION ── */}
+          <nav
+            aria-label="Navigasi Utama"
+            className="hidden lg:flex items-center gap-1.5 text-xs font-medium text-ink"
+          >
+            {navLinks.map((link, idx) => (
               <a
                 key={link.href}
-                className={`hover:text-forest transition-colors ${link.href === '#' ? 'font-semibold text-forest' : ''}`}
                 href={link.href}
+                className={`px-3 py-2 rounded-sm transition-all ${
+                  idx === 0
+                    ? 'font-bold text-forest bg-paper-subtle'
+                    : 'text-ink/80 hover:text-forest hover:bg-paper-subtle'
+                }`}
               >
                 {link.label}
               </a>
             ))}
+
+            <div className="h-4 w-px bg-line mx-2" aria-hidden="true" />
+
+            {/* CTA Button */}
             <button
               type="button"
               onClick={() => onOpenRegistration()}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-paper bg-forest hover:bg-forest-deep transition-colors cursor-pointer rounded-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-forest text-paper text-xs font-semibold rounded-sm hover:bg-forest-deep active:scale-98 transition-all shadow-xs cursor-pointer ml-1"
             >
-              <span>Daftar / Sowan Warga</span>
-              <span className="text-[11px]" aria-hidden="true">→</span>
+              <span>Ajukan Sowan</span>
+              <span aria-hidden="true" className="text-[11px]">→</span>
             </button>
           </nav>
 
-          {/* Mobile navigation controls */}
+          {/* ── MOBILE CONTROLS ── */}
           <div className="flex lg:hidden items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={() => onOpenRegistration()}
-              className="min-h-[38px] px-3 py-1.5 text-[11px] font-bold text-paper bg-forest hover:bg-forest-deep active:bg-forest-deep rounded-sm shadow-xs cursor-pointer"
+              className="min-h-[38px] px-3.5 py-1.5 text-xs font-bold text-paper bg-forest hover:bg-forest-deep active:scale-98 rounded-sm shadow-xs cursor-pointer flex items-center gap-1"
             >
-              Sowan ↗
+              <span>Sowan</span>
+              <span aria-hidden="true" className="text-[11px]">→</span>
             </button>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="min-h-[38px] min-w-[38px] p-2 border border-line rounded-sm text-ink hover:bg-paper-subtle active:bg-paper-muted focus:outline-none flex items-center justify-center cursor-pointer transition-colors"
-              aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
+              aria-label={mobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
               aria-expanded={mobileMenuOpen}
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {mobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6.5h16M4 12h16M4 17.5h16" />
                 )}
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile dropdown menu */}
+        {/* ── MOBILE DROPDOWN DRAWER ── */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+            mobileMenuOpen ? 'max-h-96 opacity-100 mt-3 pt-3 border-t border-line' : 'max-h-0 opacity-0'
           }`}
         >
-          <nav
-            aria-label="Navigasi Ponsel"
-            className="pt-3 pb-2 space-y-0.5 text-[13px] font-medium text-ink border-t border-line mt-2"
-          >
-            {navLinks.map((link, i) => (
+          <nav aria-label="Menu Ponsel" className="space-y-1 text-sm font-medium pb-2">
+            {navLinks.map((link, idx) => (
               <a
                 key={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block py-2.5 px-3 rounded-sm transition-colors active:bg-paper-muted ${
-                  i === 0 ? 'font-semibold text-forest bg-paper-subtle' : 'hover:bg-paper-subtle hover:text-forest'
-                }`}
                 href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center justify-between px-3 py-2.5 rounded-sm transition-colors ${
+                  idx === 0
+                    ? 'font-bold text-forest bg-paper-subtle'
+                    : 'text-ink hover:bg-paper-subtle hover:text-forest'
+                }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span className="text-ink-subtle text-xs" aria-hidden="true">→</span>
               </a>
             ))}
-            <div className="pt-2 pb-1 px-3">
+
+            <div className="pt-2 px-1">
               <button
                 type="button"
-                onClick={() => { setMobileMenuOpen(false); onOpenRegistration(); }}
-                className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-forest text-paper text-xs font-bold hover:bg-forest-deep active:bg-forest-deep transition-colors rounded-sm cursor-pointer"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenRegistration();
+                }}
+                className="w-full min-h-[44px] flex items-center justify-center gap-2 bg-forest text-paper text-xs font-bold rounded-sm shadow-xs hover:bg-forest-deep transition-colors"
               >
-                <span>Ajukan Sowan / Pendaftaran</span>
+                <span>Pendaftaran &amp; Sowan Warga Baru</span>
                 <span aria-hidden="true">→</span>
               </button>
             </div>
           </nav>
-        </div>
-
-        {/* Sub-header status bar — tablet & desktop only */}
-        <div className="hidden sm:flex pt-2.5 flex-wrap items-center justify-between text-[11px] text-ink-subtle tracking-wide uppercase gap-2">
-          <div className="flex items-center gap-3">
-            <span className="text-forest font-semibold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 bg-forest rounded-full animate-pulse" />
-              Status: Terbuka Penerimaan Warga Baru
-            </span>
-            <span className="text-line hidden md:inline" aria-hidden="true">•</span>
-            <span className="hidden md:inline">
-              Prinsip: Berlandaskan Semangat <em className="lowercase italic font-serif text-ink font-normal">Siri' na Pacce</em>
-            </span>
-          </div>
-          <div className="font-medium text-ink tracking-normal uppercase text-[11px]">
-            Edisi Komunal &amp; Kearsipan Warga
-          </div>
         </div>
       </div>
     </header>

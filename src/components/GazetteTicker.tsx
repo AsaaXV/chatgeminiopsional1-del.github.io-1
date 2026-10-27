@@ -3,41 +3,39 @@ import React from 'react';
 export const GazetteTicker: React.FC = () => {
   return (
     <aside
-      aria-label="Warta Resmi dan Kontak Cepat"
-      className="w-full border-b border-line bg-paper-subtle text-xs text-ink-muted tracking-tight"
+      aria-label="Warta Resmi dan Status Penerimaan"
+      className="w-full bg-forest text-paper text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 border-b border-forest-deep"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-y-1.5 text-xs">
-        <div className="flex items-center gap-2.5">
-          <span className="inline-block w-1.5 h-1.5 bg-forest rounded-full animate-pulse" aria-hidden="true" />
-          <span className="font-medium text-ink text-[11px] sm:text-xs">Dokumen &amp; Warta Resmi Mahasiswa Turatea</span>
-          <span className="text-line hidden sm:inline" aria-hidden="true">•</span>
-          <span className="hidden sm:inline text-ink-subtle">Kota Makassar, Sulawesi Selatan</span>
+      <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
+        {/* Left: Status with pulse dot */}
+        <div className="flex items-center gap-2 truncate">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#baeed9] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#baeed9]" />
+          </span>
+          <span className="font-semibold text-[#baeed9] tracking-wider uppercase text-[10px] sm:text-[11px]">
+            Warta Resmi:
+          </span>
+          <span className="text-paper/90 truncate">
+            Penerimaan Warga Baru Asrama Mahasiswa HPMT Jeneponto di Makassar
+          </span>
         </div>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-ink-muted font-normal text-[11px]">
-          {/* Mobile: compact */}
-          <span className="sm:hidden flex items-center gap-1">
-            <span className="font-semibold text-ink">Aspura</span> Panakkukang
-            <span className="text-line mx-1">/</span>
-            <span className="font-semibold text-ink">Aspuri</span> Minasaupa
-          </span>
-          {/* Desktop: full */}
-          <span className="hidden sm:flex items-center gap-1.5">
-            <span className="font-semibold text-ink">Aspura:</span> Panakkukang
-          </span>
-          <span className="hidden sm:inline text-line" aria-hidden="true">/</span>
-          <span className="hidden sm:flex items-center gap-1.5">
-            <span className="font-semibold text-ink">Aspuri:</span> Minasaupa
-          </span>
-          <span className="text-line hidden sm:inline" aria-hidden="true">•</span>
+
+        {/* Right: Quick shortcuts */}
+        <div className="hidden md:flex items-center gap-4 text-paper/80 shrink-0 text-[11px]">
+          <span className="text-paper/40">•</span>
+          <span>Aspura (Panakkukang)</span>
+          <span className="text-paper/40">/</span>
+          <span>Aspuri (Minasaupa)</span>
+          <span className="text-paper/40">•</span>
           <a
-            className="inline-flex items-center gap-1 text-forest hover:text-forest-deep font-medium underline underline-offset-2 transition-colors focus:outline-none focus:ring-1 focus:ring-forest"
             href="https://www.instagram.com/asrama.hpmt/"
-            rel="noopener noreferrer"
             target="_blank"
-            aria-label="Kunjungi Instagram resmi @asrama.hpmt (terbuka di tab baru)"
+            rel="noopener noreferrer"
+            className="text-[#baeed9] hover:text-white underline underline-offset-2 transition-colors inline-flex items-center gap-1 font-medium"
           >
-            <span>@asrama.hpmt</span>
-            <span className="text-[10px]" aria-hidden="true">↗</span>
+            <span>Instagram @asrama.hpmt</span>
+            <span className="text-[9px]" aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
