@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScrollReveal } from '../utils/useScrollReveal.ts';
 import { OFFICIAL_LOGOS } from '../data/dormitoryData.ts';
 
 export const ContactSection: React.FC = () => {

@@ -1,3 +1,4 @@
+import { useScrollReveal } from '../utils/useScrollReveal.ts';
 import React, { useState, useMemo } from 'react';
 import { FACILITIES_DATA } from '../data/dormitoryData.ts';
 import { filterFacilities } from '../utils/asrama.ts';

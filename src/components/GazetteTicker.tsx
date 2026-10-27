@@ -4,21 +4,28 @@ export const GazetteTicker: React.FC = () => {
   return (
     <aside
       aria-label="Warta Resmi dan Kontak Cepat"
-      className="hidden sm:block w-full border-b border-line bg-paper-subtle text-xs text-ink-muted tracking-tight"
+      className="w-full border-b border-line bg-paper-subtle text-xs text-ink-muted tracking-tight"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-y-2 text-xs">
-        <div className="flex items-center gap-3">
-          <span className="inline-block w-1.5 h-1.5 bg-forest rounded-full animate-pulse" aria-hidden="true"></span>
-          <span className="font-medium text-ink">Dokumen &amp; Warta Resmi Mahasiswa Turatea</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex flex-wrap items-center justify-between gap-y-1.5 text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="inline-block w-1.5 h-1.5 bg-forest rounded-full animate-pulse" aria-hidden="true" />
+          <span className="font-medium text-ink text-[11px] sm:text-xs">Dokumen &amp; Warta Resmi Mahasiswa Turatea</span>
           <span className="text-line hidden sm:inline" aria-hidden="true">•</span>
           <span className="hidden sm:inline text-ink-subtle">Kota Makassar, Sulawesi Selatan</span>
         </div>
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-ink-muted font-normal">
-          <span className="flex items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-ink-muted font-normal text-[11px]">
+          {/* Mobile: compact */}
+          <span className="sm:hidden flex items-center gap-1">
+            <span className="font-semibold text-ink">Aspura</span> Panakkukang
+            <span className="text-line mx-1">/</span>
+            <span className="font-semibold text-ink">Aspuri</span> Minasaupa
+          </span>
+          {/* Desktop: full */}
+          <span className="hidden sm:flex items-center gap-1.5">
             <span className="font-semibold text-ink">Aspura:</span> Panakkukang
           </span>
-          <span className="text-line" aria-hidden="true">/</span>
-          <span className="flex items-center gap-1.5">
+          <span className="hidden sm:inline text-line" aria-hidden="true">/</span>
+          <span className="hidden sm:flex items-center gap-1.5">
             <span className="font-semibold text-ink">Aspuri:</span> Minasaupa
           </span>
           <span className="text-line hidden sm:inline" aria-hidden="true">•</span>

@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { FAQ_ITEMS } from '../data/dormitoryData.ts';
+import { useScrollReveal } from '../utils/useScrollReveal.ts';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { ref, visible } = useScrollReveal({ threshold: 0.06 });
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-line" id="alur-pendaftaran">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10">
+    <section
+      className="max-w-6xl mx-auto px-4 sm:px-6 py-16 border-t border-line"
+      id="alur-pendaftaran"
+      ref={ref as React.RefObject<HTMLElement>}
+    >
+      <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-10 reveal ${visible ? 'visible' : ''}`}>
         <div className="lg:col-span-5">
           <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-forest block mb-1">
             Informasi Bagi Calon Warga &amp; Orang Tua
@@ -27,7 +33,9 @@ export const FaqSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="divide-y divide-line border-t border-b border-line bg-paper">
+      <div
+        className={`divide-y divide-line border-t border-b border-line bg-paper reveal delay-200 ${visible ? 'visible' : ''}`}
+      >
         {FAQ_ITEMS.map((item, index) => {
           const isOpen = openIndex === index;
           return (
@@ -36,18 +44,22 @@ export const FaqSection: React.FC = () => {
                 type="button"
                 onClick={() => toggle(index)}
                 aria-expanded={isOpen}
-                className="w-full flex items-center justify-between text-left gap-4 font-serif text-[16px] sm:text-lg font-bold text-ink hover:text-forest transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between text-left gap-4 font-serif text-[16px] sm:text-lg font-bold text-ink hover:text-forest active:text-forest transition-colors cursor-pointer"
               >
                 <span className="leading-snug">{item.question}</span>
-                <span className="min-w-[30px] min-h-[30px] flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-white">
+                <span className={`min-w-[30px] min-h-[30px] flex items-center justify-center shrink-0 text-sm font-mono font-bold text-ink border border-line bg-white transition-all duration-200 ${isOpen ? 'bg-forest text-paper border-forest' : ''}`}>
                   {isOpen ? '−' : '+'}
                 </span>
               </button>
-              {isOpen && (
-                <div className="mt-3 text-[14px] sm:text-sm text-ink/85 leading-[1.65] pr-2 sm:pr-6">
-                  <p>{item.answer}</p>
-                </div>
-              )}
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  isOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0'
+                }`}
+              >
+                <p className="text-[14px] sm:text-sm text-ink/85 leading-[1.65] pr-2 sm:pr-6">
+                  {item.answer}
+                </p>
+              </div>
             </div>
           );
         })}
