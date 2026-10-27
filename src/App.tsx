@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import { GazetteTicker } from './components/GazetteTicker.tsx';
 import { CivicHeader } from './components/CivicHeader.tsx';
 import { HeroSection } from './components/HeroSection.tsx';
 import { ManifestoSection } from './components/ManifestoSection.tsx';
@@ -40,9 +39,6 @@ export default function App() {
           splashDone ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        {/* Top Gazette Editorial Runner */}
-        <GazetteTicker />
-
         {/* Main Header / Navigation */}
         <CivicHeader onOpenRegistration={handleOpenRegistration} />
 
