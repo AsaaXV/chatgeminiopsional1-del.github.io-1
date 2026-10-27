@@ -75,7 +75,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectPhoto, onOpenR
             </div>
             <div className="p-3 rounded-lg bg-white/60 border border-line/70">
               <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">Kapasitas</span>
-              <span className="text-xs text-ink/80 mt-0.5 block font-medium">Maks. 2 Orang/Kamar</span>
+              <span className="text-xs text-ink/80 mt-0.5 block font-medium">Aspura 1 Org/Kamar</span>
             </div>
             <div className="p-3 rounded-lg bg-white/60 border border-line/70">
               <span className="text-[11px] font-bold uppercase tracking-wider text-forest block">Nilai Luhur</span>

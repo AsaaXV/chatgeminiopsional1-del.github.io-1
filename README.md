@@ -15,7 +15,7 @@ Website resmi direktori dan panduan warga **Asrama Mahasiswa HPMT (Himpunan Pela
 
 2. **Transparansi Fasilitas & Iuran Swakelola Warga**:
    - Biaya masuk Rp1.500.000 dibayarkan satu kali saat resmi diterima menjadi warga asrama dan bebas biaya sewa kamar sampai lulus kuliah (seluruh dana digunakan untuk perawatan & pengadaan fasilitas fisik asrama bersama).
-   - Tabel buku besar kebutuhan pokok (Air sumur bor gratis, listrik standar, Wi-Fi broadband 24 jam Rp40.000/bln, kamar tidur maksimal 2 orang).
+   - Tabel buku besar kebutuhan pokok (Air sumur bor gratis, listrik standar, Wi-Fi broadband 24 jam Rp40.000/bln, Aspura 1 orang 1 kamar, Aspuri maksimal 2 orang per kamar).
    - Pencarian cepat & filter kategori fasilitas (Kebutuhan Pokok, Iuran Kolektif, Sarana Komunal).
 
 3. **Formulir Sowan & Pendaftaran Mahasiswa Baru**:

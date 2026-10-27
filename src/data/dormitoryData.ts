@@ -54,7 +54,7 @@ export const DORMITORY_UNITS: DormitoryUnit[] = [
     landmark: 'Koridor Pettarani — Akses Tol Reformasi — Dekat Flyover Urip Sumoharjo',
     environmentCharacter: 'Dinamis, strategis, dekat sentra fotokopi, perpustakaan, & kuliner ramah kantong mahasiswa',
     curfewAndSecurity: 'Akses gerbang terkontrol, tertib ronda malam komunal sesama warga',
-    roomCapacity: 'Maksimal 2 orang per kamar tidur',
+    roomCapacity: '1 orang per kamar tidur (Kamar Mandiri)',
     coordinatorTitle: 'Koordinator Warga Aspura',
     coordinatorPhone: '+62 852-4038-9682',
     whatsappNumber: '6285240389682',
@@ -151,13 +151,13 @@ export const FACILITIES_DATA: FacilityItem[] = [
   {
     id: 'kamar',
     no: '04',
-    name: 'Kamar Tidur Berpasangan',
+    name: 'Kamar Tidur Warga',
     category: 'pokok',
-    costStatus: 'Maks. 2 Orang / Kamar',
+    costStatus: 'Aspura: 1 Org � Aspuri: Maks 2 Org',
     monthlyCost: 0,
     isOptional: false,
     description:
-      'Sistem satu kamar dihuni maksimal dua mahasiswa untuk melatih kedisiplinan berbagi ruang, menjaga ketenangan belajar, dan mencegah penumpukan barang yang tidak teratur.'
+      'Aspura: 1 orang 1 kamar tidur untuk kenyamanan belajar mandiri. Aspuri: maksimal 2 orang per kamar tidur untuk melatih kedisiplinan berbagi ruang dan kebersamaan.'
   },
   {
     id: 'gazebo',
